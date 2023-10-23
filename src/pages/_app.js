@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import { Loader } from "@/componenets";
 
+
 const JosefinSans = Josefin_Sans({
     style: "normal",
     subsets: ["latin-ext"],
@@ -17,7 +18,6 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         let timer;
         const handleComplete = () => (timer = setTimeout(() => setLoading(false), 1000));
-
         const handleStart = () => {
             if (timer) {
                 clearTimeout(timer);
