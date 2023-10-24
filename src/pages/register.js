@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/register.module.css";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import axios from "axios"
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import {box} from "../assets/treasure_box.svg"
 import Image from "next/image";
 
 export default function Register() {
-    const [creds, setDetails] = useState({
+    const [details, setDetails] = useState({
         email: "",
         fullname: "",
         password: "",
@@ -21,16 +19,17 @@ export default function Register() {
     const router = useRouter();
 
     const register = async () => {
-        if (creds.email.length == 0) toast.error("Please enter your Email address");
-        else if (creds.fullname.length == 0) toast.error("Please enter your Full Name");
-        else if (creds.phone.length != 10) toast.error("Please enter a valid Indian Phone Number");
-        else if (creds.pass.length < 5 || creds.pass.length > 32)
+        if (details.email.length == 0) toast.error("Please enter your Email address");
+        else if (details.fullname.length == 0) toast.error("Please enter your Full Name");
+        else if (details.phone.length != 10)
+            toast.error("Please enter a valid Indian Phone Number");
+        else if (details.pass.length < 5 || details.pass.length > 32)
             toast.error("Password must be between 5 and 32 characters");
         else {
             try {
                 const response = await axios.post(
                     "https://4291-212-8-243-131.ngrok-free.app/api/auth/register",
-                    creds
+                    details
                 );
                 if (response.data.success === false) toast.error(response.data.message);
                 else {
@@ -64,7 +63,7 @@ export default function Register() {
                             type="name"
                             placeholder="Full Name"
                             onChange={(s) => {
-                                setDetails({ ...creds, fullname: s.target.value });
+                                setDetails({ ...details, fullname: s.target.value });
                             }}
                             required
                         />
@@ -75,7 +74,7 @@ export default function Register() {
                             className={styles.inputField}
                             placeholder="Email"
                             onChange={(s) => {
-                                setDetails({ ...creds, email: s.target.value });
+                                setDetails({ ...details, email: s.target.value });
                             }}
                             required
                         />
@@ -86,7 +85,7 @@ export default function Register() {
                             className={styles.inputField}
                             placeholder="Username"
                             onChange={(s) => {
-                                setDetails({ ...creds, username: s.target.value });
+                                setDetails({ ...details, username: s.target.value });
                             }}
                             required
                         />
@@ -97,7 +96,7 @@ export default function Register() {
                             className={styles.inputField}
                             placeholder="Create New Password"
                             onChange={(s) => {
-                                setDetails({ ...creds, pass: s.target.value });
+                                setDetails({ ...details, pass: s.target.value });
                             }}
                             required
                         />
@@ -116,7 +115,7 @@ export default function Register() {
                                         0,
                                         s.target.value.length - 1
                                     );
-                                setDetails({ ...creds, phone: s.target.value });
+                                setDetails({ ...details, phone: s.target.value });
                             }}
                             required
                         />

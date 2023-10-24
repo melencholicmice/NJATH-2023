@@ -2,25 +2,25 @@ import React, { useState } from "react";
 import styles from "@/styles/login.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { treasureBox } from "@/assets/TreasureBox";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
 
 export default function Login() {
-    const [creds, setDetails] = useState({ email: "", password: "" });
+    const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
     const authenticate = async () => {
-        if (!creds.email || !creds.password) {
+        if (!details.email || !details.password) {
             toast.error("Please fill in both email and password fields");
             return;
         }
         try {
             const response = await axios.post(
                 `https://4291-212-8-243-131.ngrok-free.app/api/auth/login`,
-                creds
+                details
             );
             console.log(response);
             if (response.data.success === false) {
@@ -53,7 +53,7 @@ export default function Login() {
                             type="email"
                             placeholder="Email"
                             onChange={(s) => {
-                                setDetails({ email: s.target.value, password: creds.password });
+                                setDetails({ email: s.target.value, password: details.password });
                             }}
                             required
                         />
@@ -65,7 +65,7 @@ export default function Login() {
                             type="password"
                             placeholder="Password"
                             onChange={(s) => {
-                                setDetails({ email: creds.email, password: s.target.value });
+                                setDetails({ email: details.email, password: s.target.value });
                             }}
                             required
                         />
@@ -96,7 +96,7 @@ export default function Login() {
                     </div>
                 </div>
                 <div className={styles.imageContainer}>
-                    <div dangerouslySetInnerHTML={{ __html: treasureBox }}></div>
+                    <Image src="/assets/treasure_box.svg" width={900.44} height={1000}></Image>
                 </div>
             </div>
         </>
