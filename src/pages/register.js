@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/register.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { treasureBox } from "@/assets/TreasureBox";
-import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import axios from "axios"
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import {box} from "../assets/treasure_box.svg"
+import Image from "next/image";
 
 export default function Register() {
     const [creds, setDetails] = useState({
@@ -125,19 +126,28 @@ export default function Register() {
                         {error ? error : "Noice"}
                     </div> */}
 
-                    <div className={styles.submitBtnContainer}>
-                        <button onClick={() => register()} className={styles.submit}>
-                            Register
-                        </button>
+                    <div>
+                        <button onClick={() => register()}
+                            className={styles.submit}>Register</button>
                     </div>
 
-                    <Link className={styles.registerRedir} id="redir" href="/login">
+                    <div className={styles.already}>
                         Already Registered?
-                    </Link>
+                    </div>
                 </div>
                 <div className={styles.imageContainer}>
-                    <div dangerouslySetInnerHTML={{ __html: treasureBox }}></div>
+                    <Image src="/assets/treasure_box.svg"
+                    width={900.44}
+                    height={1000}            
+                    ></Image>
+                    
                 </div>
+            </div>
+            <div className={styles.bottomchain}>
+                    <Image src="/assets/Bottom-chain.svg"
+                    width={1300}
+                    height={450}            
+                    ></Image>
             </div>
         </>
     );

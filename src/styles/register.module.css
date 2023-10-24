@@ -1,30 +1,34 @@
 .mainContainer {
-    /* display: flex;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 50px;
     height: 100vh;
     width: 100%; 
     margin: 0;
     max-width: 100%;
-    position: fixed;
+    /* min-width: 100px; */
+    position: relative;
+    border: solid red;
+    /* border: solid red; */
     text-align: center;
     overflow: hidden;
-    background-color: rgb(11, 19, 34);
-    scroll-behavior: unset; */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    max-height: 100%;
-    text-align: center;
-    overflow: hidden;
+    /* background-color: rgb(11, 19, 34); */
+    scroll-behavior: unset;
 }
-
+.inputField{
+    min-width: 50%;
+    flex-shrink: 0;
+    height: 59px;
+    background: none;
+    width: 396px;
+    border-radius: 8px;
+    padding-left: 10px;
+    border: solid rgba(129, 124, 124, 0.595);
+}
 .registerBox {
     display: flex;
+    /* position: absolute; */
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -42,75 +46,43 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    z-index: 3;
     /* border: solid blue; */
 }
 
 .title {
-    width: 70%;
-    text-align: center;
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: 4px;
+    /* width: 70%;
+    text-align: left;
+    padding-left: 50px;
     margin-bottom: 5%;
     line-height: 45px;
     color: #fff;
-    z-index: 2;
-}
-
-@media screen and (max-width: 768px) {
-    .title {
-        font-size: 24px;
-        line-height: 25px;
-    }
+    z-index: 2; */ 
+    font-size: 32px;
+    font-weight: 800;
+    min-width: 50%;
+    flex-shrink: 0;
+    /* height: 59px; */
+    background: none;
+    text-align: left;
+    width: 396px;
+    border-radius: 8px;
+    /* border: solid gold; */
 }
 .disclaimer {
     width: 80%;
     margin-top: -2.5%;
     margin-bottom: 5%;
 }
-
-.inputField{
-    /* min-width: 50%;
-    flex-shrink: 0;
-    height: 59px;
-    background: none;
-    width: 396px;
-    border-radius: 8px;
-    padding-left: 10px;
-    border: solid white; */
-    font-size: 16px;
-    padding: 10px;
-}
-
 .inputDiv{
-    /* min-width: 50%;
-    flex-shrink: 0;
-    height: 59px;
-    background: none;
-    width: 396px;
-    border-radius: 8px; */
-    display: flex;
-    align-items: center;
-    text-align: left;
-    justify-content: space-between;
-
-    @media screen and (max-width: 500px) {
-        flex-direction: column;
-        margin-bottom: 2%;
-    }
-}
-
-.inputDiv input {
     min-width: 50%;
     flex-shrink: 0;
     height: 59px;
     background: none;
     width: 396px;
+    /* border: solid red; */
     border-radius: 8px;
-    padding: 10px;
-    padding: 23px 18px 23px 18px;
 }
-
 .submit {
     width: 396px;
     height: 59px;
@@ -124,14 +96,13 @@
     font-size: 18px;
     color:#121B24;
     font-weight: 700;
+    z-index: 1;
+    /* margin-top: -25px; */
 }
-
-.submitBtnContainer{
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-.registerRedir span {
-    text-decoration: line-through;
+.already{
+    position: relative;
+    margin-top: 15px;
+    font-size: 20px;
 }
 
 .redText {
@@ -152,13 +123,35 @@
     align-items: center;
     height: 550px;
     width: 50%; 
-    /* border-radius: 200px; */
-    padding-top: 100px;
-    /* border: solid blue; */
+    /* padding-top: 60px; */
+    border: solid blue;
     /* padding-left: 50px; */
-    background-color:rgba(255, 205, 96, 0.005);
+    /* background-color:rgba(255, 205, 96, 0.005); */
+    z-index: 2;
+    padding-right: 20px;
+    /* position: absolute; */
 }
-@media screen and (max-width: 800px) {
+.bottomchain{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%; 
+    margin: 0;
+    max-width: 100%;
+    top: 46vh;
+    opacity: 60%;
+    /* position: fixed; */
+    border: solid blue;
+    rotate: 6.75 deg;
+    z-index: 1;
+    align-items: center;
+}
+@media screen and (max-width: 850px) {
+    .bottomchain{
+      display: none;
+    }
+  }
+@media screen and (max-width: 850px) {
     .imageContainer{
       display: none;
     }

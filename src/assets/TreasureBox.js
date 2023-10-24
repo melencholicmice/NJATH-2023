@@ -1,4 +1,4 @@
-export const treasureBox = `<svg width="1037" height="844" viewBox="0 0 1037 844" fill="none" xmlns="http://www.w3.org/2000/svg">
+export const treasureBox = `<svg width="1300.44" height="471" viewBox="0 0 1037 844" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_f_11_1241)">
 <ellipse cx="604.003" cy="511.593" rx="213.988" ry="30.0036" fill="black" fill-opacity="0.4"/>
 </g>
