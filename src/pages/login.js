@@ -6,38 +6,17 @@ import { treasureBox } from "@/assets/TreasureBox";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
-
     const [creds, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    // function authenticate() {
-    //         try{
-    //             const response=await
-    //         }
-    //         .then((res) => {
-    //             fetch(`https://4291-212-8-243-131.ngrok-free.app/api/auth/login`, {
-    //                 method: "POST",
-    //                 headers: {
-    //                     "Content-Type": "application/json;charset=utf-8",
-    //                 },
-    //                 body: JSON.stringify({
-    //                     ...creds,
-    //                 }),
-    //             })
-    //                 .then((res) => {
-    //                     if (res.status == 401) alert("Incorrect ID or Password");
-    //                     console.log(res);
-    //                     if (res.status == 200) router.push("/dashboard");
-    //                 })
-    //                 .catch((error) => alert(error));
-    //         });
-    // }
-
     const authenticate = async () => {
-        console.log(creds);
+        if (!creds.email || !creds.password) {
+            toast.error("Please fill in both email and password fields");
+            return;
+        }
         try {
             const response = await axios.post(
                 `https://4291-212-8-243-131.ngrok-free.app/api/auth/login`,
@@ -76,6 +55,7 @@ export default function Login() {
                             onChange={(s) => {
                                 setDetails({ email: s.target.value, password: creds.password });
                             }}
+                            required
                         />
                     </div>
 
@@ -87,6 +67,7 @@ export default function Login() {
                             onChange={(s) => {
                                 setDetails({ email: creds.email, password: s.target.value });
                             }}
+                            required
                         />
                     </div>
 
