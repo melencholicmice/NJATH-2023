@@ -123,8 +123,10 @@
     align-items: center;
     height: 550px;
     width: 50%; 
-    /* padding-top: 60px; */
-    border: solid blue;
+    z-index: -1;
+    /* border-radius: 200px; */
+    padding-top: 100px;
+    /* border: solid blue; */
     /* padding-left: 50px; */
     /* background-color:rgba(255, 205, 96, 0.005); */
     z-index: 2;
