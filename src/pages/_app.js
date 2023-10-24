@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { Montserrat } from "next/font/google";
 import { Loader } from "@/componenets";
 
+
 const Montserrat_ = Montserrat({
     style: "normal",
     subsets: ["latin-ext"],
@@ -18,7 +19,6 @@ export default function App({ Component, pageProps }) {
     useEffect(() => {
         let timer;
         const handleComplete = () => (timer = setTimeout(() => setLoading(false), 1000));
-
         const handleStart = () => {
             if (timer) {
                 clearTimeout(timer);
