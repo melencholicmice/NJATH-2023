@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-const question = () => {
+const Question = () => {
     let i = 1, q = 1, score = 40;
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -88,4 +88,4 @@ const question = () => {
     )
 }
 
-export default question
+export default Question

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "@/styles/globals.css";
-import { Josefin_Sans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import { Loader } from "@/componenets";
 
 
-const JosefinSans = Josefin_Sans({
+const monts = Montserrat({
     style: "normal",
     subsets: ["latin-ext"],
     weight: "500",
@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }) {
         };
     }, [router.events]);
     return (
-        <main className={JosefinSans.className}>
+        <main >
             {loading ? <Loader /> : <Component {...pageProps} />}
         </main>
     );

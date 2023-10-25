@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import { Nav } from "@/componenets";
+import Nav from "./nav";
+
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
