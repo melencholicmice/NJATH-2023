@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/login.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -12,38 +13,67 @@ export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    const authenticate = async () => {
+    const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
+
+    useEffect(async ()=>{
+
+        const config = {
+            withCredentials: true,
+        };
+
+        try {
+            const response = await axios.get(loginApiUrl, config);
+            if(response.status === 401 || response.status === 403){
+                toast.success
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    },[]);
+
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
         if (!details.email || !details.password) {
             toast.error("Please fill in both email and password fields");
             return;
         }
+
+        const config = {
+            withCredentials: true,
+        };
+
         try {
             const response = await axios.post(
-                `https://4291-212-8-243-131.ngrok-free.app/api/auth/login`,
-                details
+                loginApiUrl,
+                details,
+                config
             );
-            console.log(response);
-            if (response.data.success === false) {
+
+            const cookies = response.headers['set-cookie'];
+            if(response.status === 400){
+                toast.error("Login Failed! wrong credentials")
+            }
+            else if (response.data.success === false) {
                 toast.error(response.data.message);
             } else {
                 toast.success("Login Successful!");
                 router.push("/dashboard");
             }
         } catch (error) {
-            toast.error("Something went wrong!");
+            toast.error("Login Failed! please enter correct password and email");
         }
     };
 
     return (
         <>
+            <Nav className='styles.navText'></Nav>
             <ToastContainer autoClose={2000} />
             <div className="app-background" />
             <div className={styles.mainContainer}>
-                <div
+                <form
                     className={styles.loginBox}
-                    onKeyUp={(event) => {
-                        if (event.key == "Enter") authenticate();
-                    }}
+                    onSubmit={submitHandler}
                 >
                     <div className={styles.title}>Login</div>
 
@@ -78,7 +108,10 @@ export default function Login() {
                     </div>
 
                     <div>
-                        <button onClick={() => authenticate()} className={styles.submit}>
+                        <button
+                            type="submit"
+                            className={styles.submit}
+                        >
                             Login
                         </button>
                     </div>
@@ -94,9 +127,14 @@ export default function Login() {
                             Register Now!
                         </Link>
                     </div>
-                </div>
+                </form>
                 <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg" width={900.44} height={1000}></Image>
+                    <Image
+                        src="/assets/treasure_box.svg"
+                        width={900.44}
+                        height={1000}
+                        alt="Tresure image"
+                    ></Image>
                 </div>
             </div>
         </>
