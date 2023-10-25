@@ -1,78 +1,140 @@
-import React, { useState } from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/login.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Nav from "./nav";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
 
 export default function Login() {
-    const [creds, setDetails] = useState({ id: "", pass: "" });
+    const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    function authenticate() {
-        crypto.subtle
-            .digest("SHA-256", new TextEncoder().encode(creds.pass))
-            .then((res) => Array.from(new Uint8Array(res)))
-            .then((res) => {
-                fetch(`http://localhost:8080/auth`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json;charset=utf-8",
-                    },
-                    body: JSON.stringify({
-                        ...creds,
-                        pass: undefined,
-                        hash: res.map((b) => b.toString(16).padStart(2, "0")).join(""),
-                    }),
-                })
-                    .then((res) => {
-                        if (res.status == 401) alert("Incorrect ID or Password");
-                        console.log(res);
-                        if (res.status == 200) router.push('/dashboard');
-                    })
-                    .catch((error) => alert(error));
-            });
-    }
+    const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
+
+    useEffect(async ()=>{
+
+        const config = {
+            withCredentials: true,
+        };
+
+        try {
+            const response = await axios.get(loginApiUrl, config);
+            if(response.status === 401 || response.status === 403){
+                toast.success
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    },[]);
+
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        if (!details.email || !details.password) {
+            toast.error("Please fill in both email and password fields");
+            return;
+        }
+
+        const config = {
+            withCredentials: true,
+        };
+
+        try {
+            const response = await axios.post(
+                loginApiUrl,
+                details,
+                config
+            );
+
+            const cookies = response.headers['set-cookie'];
+            if(response.status === 400){
+                toast.error("Login Failed! wrong credentials")
+            }
+            else if (response.data.success === false) {
+                toast.error(response.data.message);
+            } else {
+                toast.success("Login Successful!");
+                router.push("/dashboard");
+            }
+        } catch (error) {
+            toast.error("Login Failed! please enter correct password and email");
+        }
+    };
 
     return (
         <>
             <Nav className='styles.navText'></Nav>
-            <div className="aurora-background blurred" />
+            <ToastContainer autoClose={2000} />
+            <div className="app-background" />
             <div className={styles.mainContainer}>
-                <div
+                <form
                     className={styles.loginBox}
-                    onKeyUp={(event) => {
-                        if (event.key == "Enter") authenticate();
-                    }}
+                    onSubmit={submitHandler}
                 >
-                    <div className={styles.title}>Log into N.J.A.T.H.</div>
+                    <div className={styles.title}>Login</div>
 
                     <div className={styles.inputDiv}>
-                        Celesta ID
                         <input
-                            type="username"
+                            className={styles.inputField}
+                            type="email"
+                            placeholder="Email"
                             onChange={(s) => {
-                                setDetails({ id: s.target.value, pass: creds.pass });
+                                setDetails({ email: s.target.value, password: details.password });
                             }}
+                            required
                         />
                     </div>
 
                     <div className={styles.inputDiv}>
-                        Password
                         <input
+                            className={styles.inputField}
                             type="password"
+                            placeholder="Password"
                             onChange={(s) => {
-                                setDetails({ id: creds.id, pass: s.target.value });
+                                setDetails({ email: details.email, password: s.target.value });
                             }}
+                            required
                         />
                     </div>
 
-                    <div className={styles.submit} onClick={() => authenticate()}>
-                        Login
+                    <div className={styles.forgotPassword}>
+                        <Link className="forgot-password-link" href="/forgotPass">
+                            Forgot Password?
+                        </Link>
                     </div>
 
-                    <Link className={styles.registerRedir} href="/register">
-                        <span>Not Registered 😱</span>, Click to Register
-                    </Link>
+                    <div>
+                        <button
+                            type="submit"
+                            className={styles.submit}
+                        >
+                            Login
+                        </button>
+                    </div>
+                    <div className={styles.registerRedir}>
+                        <span>
+                            Not registered Yet?
+                            <br />
+                        </span>
+                        <Link
+                            href="/register"
+                            style={{ textDecoration: "underline", color: "yellow" }}
+                        >
+                            Register Now!
+                        </Link>
+                    </div>
+                </form>
+                <div className={styles.imageContainer}>
+                    <Image
+                        src="/assets/treasure_box.svg"
+                        width={900.44}
+                        height={1000}
+                        alt="Tresure image"
+                    ></Image>
                 </div>
             </div>
         </>
