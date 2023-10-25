@@ -1,9 +1,12 @@
 import React from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
+import { Navbar } from '@/componenets';
 const question = () => {
     let i = 1, q = 1, score = 40;
     return (
+        <>
+        <Navbar/>
         <div className={styles.mainContainer}>
             <div className={styles.scoreBox}>
                 <Image src="/assets/Vector.svg"
@@ -19,11 +22,12 @@ const question = () => {
                     <div className={styles.qNo}>
                         L0{i} Q0{q}
                     </div>
-                    <p>brufhbuiidfbfh</p>
-                    <p>brufhbuiidfbfh</p>
-                    <p>brufhbuiidfbfh</p>
-                    <p>brufhbuiidfbfh</p>
-                    <p>brufhbuiidfbfh</p>
+                    <p>There was a time when this wouldn't have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
+                    There was a time when this wouldn't have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
+                    There was a time when this wouldn't have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
+                    There was a time when this wouldn't have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
+                    There was a time when this wouldn't have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
+                    </p>
                 </div>
                 <div className={styles.questionImage}>
                     <img className={styles.queimg}
@@ -58,6 +62,7 @@ const question = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
