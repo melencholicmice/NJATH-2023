@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "@/styles/login.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Nav from "./nav";
 
 export default function Login() {
     const [creds, setDetails] = useState({ id: "", pass: "" });
@@ -34,6 +35,7 @@ export default function Login() {
 
     return (
         <>
+            <Nav className='styles.navText'></Nav>
             <div className="aurora-background blurred" />
             <div className={styles.mainContainer}>
                 <div
