@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
-import { Navbar } from '@/componenets';
+// import { Navbar } from '@/componenets';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -13,7 +13,7 @@ const question = () => {
     const handleClose = () => setOpen(false);
     return (
         <>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div>
         <Modal
             open={open}

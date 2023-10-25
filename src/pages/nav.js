@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Nav = () => {
     const isUserLoggedIn = true;
   return (
@@ -21,9 +20,6 @@ const Nav = () => {
                     Sign Out (CLT2003)
                 </p>
             )}
-        
-        
-
     </div>
   )
 }
