@@ -5,11 +5,13 @@
     padding: 48px;
     border-radius: 20px;
     position: relative;
+    /* visibility: hidden; */
     /* margin-top: 40px; */
     /* height: 100vh; */
     /* justify-content: space-around; */
     border: solid 2px rgba(253, 204, 6, 1);
-    gap: 40px;
+    gap: 20px;
+    background-color: rgba(17, 26, 35, 1);
 }
 .qNo{
     /* background-color: gold; */
@@ -22,10 +24,10 @@
     height: 70px;
     font-weight: 700;
     font-size: 28px;
-    background: rgba(253, 204, 6, 1);
-    text-align: center;
-    color: black;
-    margin-bottom: 20px;    
+    background: none;
+    text-align: left;
+    color: rgba(253, 204, 6, 1);  
+    flex-grow: 1;
 }
 .descrpBox{
     display: flex;
@@ -34,37 +36,55 @@
     /* border: solid; */
     margin: 5px;
     margin-bottom: 3px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
+    /* border: solid; */
+    text-align: justify;
 }
 .scoreBox{
     /* border: solid green; */
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
-.questionImage{
-    /* height: 550px; */
-    /* width: 50%;  */
-    /* padding-top: 60px; */
-    /* border: solid blue; */
-    /* margin-left: 10%; */
-    /* padding-left: 50px; */
-    /* background-color:rgba(255, 205, 96, 0.005); */
-    /* z-index: 2; */
-    /* padding-right: 20px; */
-    /* position: absolute; */
+.modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: fit-content;
+    background-color:rgba(17, 26, 35, 1);
+    /* height: 40%; */
+    padding: 45px 48px 55px 48px;
+    border-radius: 20px;
+    min-width: 350px;
+    gap: 25px;
+
 }
 .queimg{
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     object-fit: cover;
     width: 220px;
-    height: 300px;
+    height: inherit;
+    /* height: fit-content; */
     border-radius: 20px;
     border: 1px;
-    /* margin: 10px; */
+    margin: 10px;
     border:solid 2px rgba(253, 204, 6, 1);
-    margin: 5px;
+    /* margin-left: 15px; */
     display: flex;
+    @media (max-width: 750px) {
+        /* margin-top: 5px;
+        margin-bottom: 5px; */
+        /* flex-grow: 1; */
+        margin: 0;
+        /* padding-top: 20px; */
+        /* margin: auto; */
+        margin-top: 10px;
+        width: 100%;
+    }
 }
 .ansBox{
     /* width: Fill (895px);
@@ -77,22 +97,31 @@
     display: flex;
     /* border: solid ; */
     justify-content: space-between;
-    padding-left: 15px;
+    /* padding-left: 15px; */
     @media (max-width: 750px) {
         flex-direction: column;
-        align-items: center;
-      }
+        align-items: stretch;
+    }
+    gap:10px
     /* border: solid red; */
 }
+
 .ansText{
     background: none;
-    width: 60%;
+    /* width: 70%; */
     padding: 18px 10px 18px 32px;
     /* border: solid  rgba(253, 204, 6, 1); */
     border-radius: 15px;
     border: 1px;
     gap: 10px;
-    border: solid 2px rgba(253, 204, 6, 1);
+    flex-grow: 1;
+    border: solid 2px #ffffff80;
+    @media (max-width: 768px) {
+        /* margin-top: 5px;
+        margin-bottom: 5px; */
+        /* flex-grow: 1; */
+        width: 100%;
+    }
     /* height: 15px; */
 }
 .hint{
@@ -100,15 +129,16 @@
     /* border: solid 2px rgba(253, 204, 6, 1); */
     /* margin-top: 5px; */
     padding: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
-    justify-content: space-between;
-    display: flex;
     background: none;
+    display: flex;
+    justify-content: center;
     border: solid 2px rgba(253, 204, 6, 1);
     @media (max-width: 768px) {
         margin-top: 5px;
         margin-bottom: 5px;
+        width: 100%;
+        flex: 1;
+        padding: auto;
     }
 }
 .Check{
@@ -119,7 +149,12 @@
     padding: 18px;
     justify-content: space-between;
     display: flex;
-    color: black;
+    color: rgba(17, 26, 35, 1);
+    display: flex;
+    justify-content: center;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
     /* padding: 10px; */
 }
 .CheckContent {
@@ -133,6 +168,7 @@
     /* border: solid 2px rgba(253, 204, 6, 1); */
     @media (max-width: 750px) {
         flex-direction: column;
+        /* margin-top: 10px; */
     }
     overflow: hidden;
     justify-content: space-between;
