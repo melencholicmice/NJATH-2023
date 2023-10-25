@@ -8,7 +8,7 @@ export default function Dashboard() {
             <div className="aurora-background" />
 			<Navbar/>
             <div className={styles.mainContainer}>
-                
+                This is DashBoard
 			</div>
         </>
     );
