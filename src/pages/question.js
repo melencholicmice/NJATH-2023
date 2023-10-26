@@ -1,7 +1,8 @@
 import React , {useState} from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
-import Modal from "../componenets/Question/Smodal"
+// import Modal from "src\components\Question\Smodal.js"
+import Modal from '@components/Question/Smodal';
 const Question = () => {
     let i = 1, q = 1, score = 40;
     const [open, setOpen] = useState(false);
