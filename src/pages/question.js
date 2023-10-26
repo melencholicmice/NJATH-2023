@@ -16,6 +16,7 @@ const Question = () => {
         <div className={styles.mainContainer}>
             <div className={styles.scoreBox}>
                 <Image src="/assets/Vector.svg"
+                    alt = "vector"
                     width={23}
                     height={25}
                 ></Image>
@@ -38,7 +39,6 @@ const Question = () => {
 
                     <img className={styles.queimg}
                         src='https://user-images.githubusercontent.com/99478938/277416211-e246b1c6-b5b1-4151-a7f2-ee367a213783.png'>
-
                     </img>
 
             </div>
@@ -52,7 +52,7 @@ const Question = () => {
                 <div>
                 <button className={styles.hint} onClick={handleOpen}>
                         <div className={styles.CheckContent}>
-                            <Image src="/assets/Bulb.svg" width={18} height={18} />
+                            <Image src="/assets/Bulb.svg" alt ="Bulb" width={18} height={18} />
                             <div>Hint</div>
                         </div>
                     </button>
@@ -60,7 +60,7 @@ const Question = () => {
                 <div>
                     <button className={styles.Check}>
                         <div className={styles.CheckContent}>
-                            <Image src="/assets/Check.svg" width={18} height={18} />
+                            <Image src="/assets/Check.svg" alt="Tick Mark" width={18} height={18} />
                             <div>Check Answer</div>
                         </div>
                     </button>

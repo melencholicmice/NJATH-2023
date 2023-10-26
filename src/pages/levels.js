@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { Navbar } from '@/components';
 import Loading from '@/components/Loading/Loading';
 import LeveLAccordians from '@components/Level/LevelAccordian';
 

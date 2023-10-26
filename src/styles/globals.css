@@ -48,6 +48,9 @@ html{
     @apply  rounded-lg uppercase tracking-wider border-solid border-2 border-njathbg bg-white py-2.5 px-5 text-njathbg transition-all hover:bg-njathbg hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
   }
   
+  .border_outline {
+    @apply  rounded-full uppercase tracking-wider border-solid border-2 border-njathgold bg-transparent py-2.5 px-5 text-njathgold transition-all hover:border-white hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+  }
 
 
   .head_text {

@@ -22,9 +22,18 @@ module.exports = {
       },
       colors:{
         njathbg: '#111A23',
-        njathgold: '#FDCC06',
+        njathgold: '#FDCC06'
+      },
+      letterSpacing: {
+        tightest: '-.075em',
+        tighter: '-.05em',
+        tight: '-.025em',
+        normal: '0.05em',
+        wide: '.1em',
+        wider: '.25em',
+        widest: '.45em',
       }
     },
   },
-  plugins: [],
+    plugins: [],
 }
