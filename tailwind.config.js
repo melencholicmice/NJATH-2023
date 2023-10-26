@@ -22,7 +22,7 @@ module.exports = {
       },
       colors:{
         njathbg: '#111A23',
-        njathgold: '#FDCC06'
+        njathgold: '#FDCC06',
       }
     },
   },

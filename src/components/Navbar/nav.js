@@ -12,7 +12,7 @@ const Nav = ({userStatus}) => {
     const [toggleDropDown, setToggleDropDown] = useState(null);
   return (
     
-    <nav className="flex-between w-full mb-6 ml-2 pr-4 pt-0.5 gap-2">
+    <nav className="flex-between w-full  ml-2 pr-4 pt-0.5 gap-2">
 
       <Image src="/assets/icons/typeface_nav.svg"
           alt="NJATH Logo"

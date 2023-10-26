@@ -76,17 +76,27 @@ export default function Login() {
         <>
             <Nav className='styles.navText' userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
+            
+            
+                    <Image
+                        src="/assets/treasure_box.svg"
+                        className={styles.treasurebox}
+                        width={900.44}
+                        height={1000}
+                        alt="Treasure image"
+                    ></Image>
+                
             <div className={styles.mainContainer}>
+            
                 <form
                     className={styles.loginBox}
                     onSubmit={submitHandler}
                 >
-                    <div className={styles.title}>Login</div>
+                    <div className="head_text">Login</div>
 
-                    <div className={styles.inputDiv}>
+                    <div className="flex flex-col justify-end w-full">
                         <input
-                            className={styles.inputField}
+                            className="form_input w-full"
                             type="email"
                             placeholder="Email"
                             onChange={(s) => {
@@ -96,9 +106,9 @@ export default function Login() {
                         />
                     </div>
 
-                    <div className={styles.inputDiv}>
+                    <div className="flex flex-col justify-end w-full">
                         <input
-                            className={styles.inputField}
+                            className="form_input"
                             type="password"
                             placeholder="Password"
                             onChange={(s) => {
@@ -106,43 +116,34 @@ export default function Login() {
                             }}
                             required
                         />
-                    </div>
-
-                    <div className={styles.forgotPassword}>
+                        <div className="text-white/90 hover:text-white hover:underline text-sm mt-1.5 self-end font-medium">
                         <Link className="forgot-password-link" href="/forgotPass">
                             Forgot Password?
                         </Link>
                     </div>
+                    </div>
 
-                    <div>
+                    
+
                         <button
                             type="submit"
-                            className={styles.submit}
-                        >
+                            className="black_btn w-full h-12 rounded-sm text-xl">
                             Login
                         </button>
-                    </div>
                     <div className={styles.registerRedir}>
-                        <span>
-                            Not registered Yet?
+                        <span className="text-white/70 font-medium">
+                            Not registered yet?
                             <br />
                         </span>
                         <Link
                             href="/register"
-                            style={{ textDecoration: "underline", color: "yellow" }}
+                            className="text-white/90 hover:text-white underline hover:text-njathgold text-sm mt-1.5 self-end font-medium"
                         >
                             Register Now!
                         </Link>
                     </div>
                 </form>
-                <div className={styles.imageContainer}>
-                    <Image
-                        src="/assets/treasure_box.svg"
-                        width={900.44}
-                        height={1000}
-                        alt="Tresure image"
-                    ></Image>
-                </div>
+                
             </div>
         </>
     );
