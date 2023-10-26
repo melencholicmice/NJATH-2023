@@ -8,7 +8,11 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import Nav from "./nav";
+import Nav from "../componenets/Navbar/nav";
+
+export default function Login() {
+    const [details, setDetails] = useState({ email: "", password: "" });
+    const router = useRouter();
 
 const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
 
@@ -71,8 +75,8 @@ export default function Login() {
 
     return (
         <>
+            <Nav className='styles.navText' userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <Nav className='styles.navText'></Nav>
             <div className="app-background" />
             <div className={styles.mainContainer}>
                 <form
