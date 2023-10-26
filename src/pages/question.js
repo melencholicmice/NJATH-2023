@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
-// import { Navbar } from '@/componenets';
+// import { Navbar } from '@/components';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
