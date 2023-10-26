@@ -38,18 +38,18 @@ html{
   }
   
   .black_btn {
-    @apply rounded-lg uppercase font-bold tracking-wider border-none bg-njathgold py-2.5 px-5 text-njathbg  transition-all hover:bg-white  text-center text-xs font-montserrat flex items-center justify-center;
+    @apply rounded-lg uppercase font-bold tracking-wide border-none bg-njathgold py-2.5 px-5 text-njathbg  transition-all hover:bg-white  text-center text-xs font-montserrat flex items-center justify-center;
   }
   
   .outline_btn {
-    @apply bg-transparent uppercase font-bold tracking-wider py-2.5 px-2.5 text-white transition-all hover:text-njathgold text-center text-xs font-montserrat flex items-center justify-center;
+    @apply bg-transparent uppercase font-bold tracking-wide py-2.5 px-2.5 text-white transition-all hover:text-njathgold text-center text-xs font-montserrat flex items-center justify-center;
   }
   .border_outline_btn {
-    @apply  rounded-lg uppercase tracking-wider border-solid border-2 border-njathbg bg-white py-2.5 px-5 text-njathbg transition-all hover:bg-njathbg hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+    @apply  rounded-lg uppercase tracking-wide border-solid border-2 border-njathbg bg-white py-2.5 px-5 text-njathbg transition-all hover:bg-njathbg hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
   }
   
   .border_outline {
-    @apply  rounded-full uppercase tracking-wider border-solid border-2 border-njathgold bg-transparent py-2.5 px-5 text-njathgold transition-all hover:border-white hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+    @apply  rounded-full uppercase tracking-wide border-solid border-2 border-njathgold bg-transparent py-2.5 px-5 text-njathgold transition-all hover:border-white hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
   }
 
 
@@ -109,11 +109,11 @@ html{
   }
   
   .dropdown {
-    @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2.5 justify-end items-end;
+    @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2.5 justify-end items-end z-50;
   }
   
   .dropdown_link {
-    @apply uppercase text-xs font-montserrat tracking-wider hover:text-gray-500;
+    @apply uppercase text-xs font-montserrat tracking-wide hover:text-gray-500;
   }
   
   /* PromptCard Component */

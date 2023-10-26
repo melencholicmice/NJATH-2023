@@ -10,6 +10,7 @@
     font-family: 'Montserrat', sans-serif;
     padding: 5%;
     padding-top: 5%;
+    z-index:10;
     @media screen and (max-width:850px) {
         padding: 2%;
         margin:0;
@@ -43,7 +44,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    z-index:-1;
+    z-index:10;
     order:0;
     @media screen and (max-width:850px) {
         width: 80%;
@@ -148,7 +149,7 @@
     @media screen and (max-width: 850px) {
         display: none;
     }
-    z-index: -50;
+    z-index: -10;
 }
 
 .inputField {

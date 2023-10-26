@@ -208,7 +208,7 @@
     align-items: center;
     height: 550px;
     width: 50%; 
-    z-index: 2;
+    z-index: -50;
     /* padding-right: 20px; */
     /* border: solid red; */
     overflow: visible;
