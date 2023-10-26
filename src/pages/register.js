@@ -5,7 +5,7 @@ import axios from "axios"
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image";
-import Nav from "@componenets/Navbar/nav";
+import Nav from "@components/Navbar/nav";
 
 export default function Register() {
     const [details, setDetails] = useState({

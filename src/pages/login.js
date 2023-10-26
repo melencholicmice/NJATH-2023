@@ -8,15 +8,36 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import Nav from "../componenets/Navbar/nav";
+import Nav from "../components/Navbar/nav";
+
 
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    useEffect(()=>{
+    const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
+
+    const getLogin = async (router) => {
+        const config = {
+            withCredentials: true,
+        };
+
+        try {
+            const response = await axios.get(loginApiUrl, config);
+            console.log(response);
+            if (response.status === 200) {
+                toast.success(response.data.message);
+                router.push("/dashboard");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+
+    useEffect(() => {
         getLogin(router);
-    },[]);
+    }, []);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -37,7 +58,7 @@ export default function Login() {
             );
 
             const cookies = response.headers['set-cookie'];
-            if(response.status === 400){
+            if (response.status === 400) {
                 toast.error("Login Failed! wrong credentials")
             }
             else if (response.data.success === false) {

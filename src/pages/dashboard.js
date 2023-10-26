@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "@/styles/dashboard.module.css";
-import { Navbar } from "@/componenets";
+import { Navbar } from "@/components";
 
 export default function Dashboard() {
     return (

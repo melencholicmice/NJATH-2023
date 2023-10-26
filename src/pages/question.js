@@ -7,7 +7,6 @@ const Question = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    // console.log(open);
     return (
         <>
         <Modal open={open} handleClose={handleClose}/>
