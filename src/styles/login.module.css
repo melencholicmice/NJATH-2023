@@ -43,7 +43,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    z-index:1;
+    z-index:-1;
     order:0;
     @media screen and (max-width:850px) {
         width: 80%;
@@ -148,6 +148,7 @@
     @media screen and (max-width: 850px) {
         display: none;
     }
+    z-index: -50;
 }
 
 .inputField {

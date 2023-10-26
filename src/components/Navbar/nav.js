@@ -12,7 +12,7 @@ const Nav = ({userStatus}) => {
     const [toggleDropDown, setToggleDropDown] = useState(null);
   return (
     
-    <nav className="flex-between w-full  ml-2 pr-4 pt-0.5 gap-2">
+    <nav className="flex-between w-full  ml-2 pr-4 pt-0.5 gap-2 z-50">
 
       <Image src="/assets/icons/typeface_nav.svg"
           alt="NJATH Logo"
@@ -30,8 +30,7 @@ const Nav = ({userStatus}) => {
           <div className="flex-end gap-0">
             <Link href="/dashboard" className="outline_btn">
             Levels</Link>
-            <Link href="/rules" className="outline_btn">
-            Rules</Link>
+           
             <Link href="/leaderboard" className="outline_btn">
             Learderboard</Link>
             <Link href="/" className="outline_btn">
@@ -71,9 +70,7 @@ const Nav = ({userStatus}) => {
                   className="dropdown_link border_outline_btn w-full hover:text-white font-bold"
                   onClick={()=>setToggleDropDown(false)}>
                   Levels </Link>
-                <Link href="/rules"
-                  className="dropdown_link border_outline_btn w-full hover:text-white font-bold"
-                  onClick={()=>setToggleDropDown(false)}> Rules </Link>
+                
                 <Link href="/leaderboard"
                   className="dropdown_link border_outline_btn w-full hover:text-white font-bold"
                   onClick={()=>setToggleDropDown(false)}>

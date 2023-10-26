@@ -47,7 +47,7 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
-        <Nav className='styles.navText' userStatus={false}></Nav>
+        <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
             <div className="app-background" />
             <div className={styles.mainContainer}>
