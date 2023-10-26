@@ -6,33 +6,35 @@ import { useState, useEffect } from "react";
 // import {signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
-    const isUserLoggedIn = false;
+    const userName= "DaleCLT2003";
+    const isUserLoggedIn = true;
     const [providers, setProviders]=useState(null);
-    const [toggleDropDown, setToggleDropDown] = useState(false);
+    const [toggleDropDown, setToggleDropDown] = useState(null);
   return (
     
-    <nav className="flex-between w-full mb-16 pt-2 gap-10">
-      <Link href="/" className="flex gap-2 flex-center">
+    <nav className="flex-between w-full mb-6 pl-4 pt-2 gap-2">
+      <Link href="/" className="logo_text flex-center gap-4 flex-center">
         <Image 
           src="/assets/Celesta-icon.svg"
           alt="NJATH Logo"
           width={50}
           height={50}
-          className="object-contain"/>
+          className="object-contain grow-0"/>
 
           <Image src="/assets/icons/verdant_nav.svg"
           alt="Verdant Odyssey Logo"
           width={90}
           height={50}
-          className="object-contain "
-          />
-          <Image src="/assets/icons/typeface_nav.svg"
-          alt="NJATH Logo"
-          width={150}
-          height={50}
-          className="object-contain grow"
+          className="object-contain grow-0"
           />
       </Link>
+
+      <Image src="/assets/icons/typeface_nav.svg"
+          alt="NJATH Logo"
+          width={100}
+          height={50}
+          className="object-contain"
+          />
       
 
       
@@ -40,20 +42,17 @@ const Nav = () => {
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         { isUserLoggedIn? (
-          <div className="flex gap-3 md:gap-5">
-            <Link href="/" className="black_btn">
-            Create Post</Link>
+          <div className="flex-end gap-0">
+            <Link href="/" className="outline_btn">
+            Levels</Link>
             <button type="button"  className="outline_btn">
-        Sign Out
-      </button>
-      <Link href="/profile">
-        <Image
-          src="/assets/NJATH.svg"
-          width={50}
-          height={37}
-          className="rounded-full"
-          alt="profile"/>
-      </Link>
+              Rules
+            </button><button type="button"  className="outline_btn">
+              Leaderboard
+            </button>
+            <button type="button"  className="outline_btn">
+              Log Out ({userName})
+            </button>
           </div>
         ): (
           <>
