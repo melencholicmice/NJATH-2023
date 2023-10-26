@@ -31,15 +31,30 @@
     flex-grow: 1;
 }
 .descrpBox{
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
+    /* display: flex;
+    flex-direction: column; */
     /* border: solid; */
-    margin: 5px;
-    margin-bottom: 3px;
+    /* margin: 5px; */
+    width: fit-content;
+    margin-right: 32px;
+    margin-bottom: 10px;
     /* padding-left: 10px; */
     /* border: solid; */
+    flex-grow: 2;
     text-align: justify;
+    @media (max-width: 750px) {
+        /* margin-top: 5px;
+        margin-bottom: 5px; */
+        /* flex-grow: 1; */
+        margin: 0;
+        width: 100%;
+        /* margin-top: 10px; */
+        /* margin-left: -10px; */
+        /* width: 100%; */
+        /* align-items: stretch; */
+    }
+    /* width:auto; */
+    width: 80%;
 }
 .scoreBox{
     /* border: solid green; */
@@ -67,23 +82,28 @@
     /* width: 100%;
     height: 100%; */
     object-fit: cover;
-    width: 220px;
-    height: inherit;
+    /* width: 220px;
+     */
+    /* width: fit-content; */
+    width:max(30%, 250px);
+    /* flex-grow:1; */
+    /* margin-right: 20px; */
     /* height: fit-content; */
     border-radius: 20px;
     border: 1px;
-    margin: 10px;
+    /* margin: 10px; */
     border:solid 2px rgba(253, 204, 6, 1);
     /* margin-left: 15px; */
-    display: flex;
+    /* display: flex; */
     @media (max-width: 750px) {
         /* margin-top: 5px;
         margin-bottom: 5px; */
         /* flex-grow: 1; */
         margin: 0;
         margin-top: 10px;
+        flex:1 ;
         /* margin-left: -10px; */
-        /* width: 100%; */
+        width: 100%;
         /* align-items: stretch; */
     }
 }
@@ -166,12 +186,14 @@
   }  
 .questionDiv{
     display: flex;
+    align-items: stretch;
     /* border: solid 2px rgba(253, 204, 6, 1); */
     @media (max-width: 750px) {
         flex-direction: column;
         /* margin-top: 10px; */
+        align-items: stretch;
+        /* background-color: white; */
     }
     overflow: hidden;
     justify-content: space-between;
-    align-items: center;
 }

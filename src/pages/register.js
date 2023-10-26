@@ -5,6 +5,7 @@ import axios from "axios"
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image";
+import Nav from "@componenets/Navbar/nav";
 
 export default function Register() {
     const [details, setDetails] = useState({
@@ -47,6 +48,7 @@ export default function Register() {
 
     return (
         <>
+        <Nav className='styles.navText' userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
             <div className="app-background" />
             <div className={styles.mainContainer}>

@@ -8,29 +8,15 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import { Nav } from "@/componenets";
+import Nav from "../componenets/Navbar/nav";
+
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
-
-    useEffect(async ()=>{
-
-        const config = {
-            withCredentials: true,
-        };
-
-        try {
-            const response = await axios.get(loginApiUrl, config);
-            if(response.status === 401 || response.status === 403){
-                toast.success
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    useEffect(()=>{
+        getLogin(router);
     },[]);
-
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -67,7 +53,7 @@ export default function Login() {
 
     return (
         <>
-            <Nav className='styles.navText'></Nav>
+            <Nav className='styles.navText' userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
             <div className="app-background" />
             <div className={styles.mainContainer}>
@@ -140,3 +126,4 @@ export default function Login() {
         </>
     );
 }
+

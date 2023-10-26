@@ -1,8 +1,6 @@
-import React from 'react'
-import { useState } from 'react';
+import React , {useState} from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
-// import { Navbar } from '@/componenets';
 import Modal from "../componenets/Question/Smodal"
 const Question = () => {
     let i = 1, q = 1, score = 40;
@@ -35,12 +33,12 @@ const Question = () => {
                     There was a time when this wouldnt have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
                     </p>
                 </div>
-                <div className={styles.questionImage}>
+
                     <img className={styles.queimg}
                         src='https://user-images.githubusercontent.com/99478938/277416211-e246b1c6-b5b1-4151-a7f2-ee367a213783.png'>
 
                     </img>
-                </div>
+
             </div>
             <div className={styles.ansBox}>
                 <input
@@ -64,7 +62,6 @@ const Question = () => {
                             <div>Check Answer</div>
                         </div>
                     </button>
-
                 </div>
             </div>
         </div>

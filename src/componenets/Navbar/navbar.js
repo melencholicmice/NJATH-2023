@@ -12,6 +12,7 @@ export default function Navbar() {
     return (
         <div className={styles.navbar}>
             <div className={styles.title + " " + lemonada.className}>N. J. A. T. H.</div>
+            {/* <div className={`${styles.title} ${lemonada.className}`}>N. J. A. T. H.</div> */}
             <div className={styles.links}>
                 <Link href="/dashboard">Dashboard</Link>
                 <Link href="/">Leaderboard</Link>
