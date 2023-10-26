@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
 // import { Navbar } from '@/componenets';
@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 const Question = () => {
     let i = 1, q = 1, score = 40;
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     return (
@@ -80,7 +80,6 @@ const Question = () => {
                             <div>Check Answer</div>
                         </div>
                     </button>
-
                 </div>
             </div>
         </div>

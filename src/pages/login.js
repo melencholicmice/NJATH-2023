@@ -10,28 +10,31 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "./nav";
 
+const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
+
+const getLogin = async (router) => {
+    const config = {
+        withCredentials: true,
+    };
+
+    try {
+        const response = await axios.get(loginApiUrl, config);
+        console.log(response);
+        if(response.status === 200){
+            toast.success(response.data.message);
+            router.push("/dashboard");
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
-
-    useEffect(async ()=>{
-
-        const config = {
-            withCredentials: true,
-        };
-
-        try {
-            const response = await axios.get(loginApiUrl, config);
-            if(response.status === 401 || response.status === 403){
-                toast.success
-            }
-        } catch (error) {
-            console.error('Error:', error);
-        }
+    useEffect(()=>{
+        getLogin(router);
     },[]);
-
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -68,8 +71,8 @@ export default function Login() {
 
     return (
         <>
-            <Nav className='styles.navText'></Nav>
             <ToastContainer autoClose={2000} />
+            <Nav className='styles.navText'></Nav>
             <div className="app-background" />
             <div className={styles.mainContainer}>
                 <form
