@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-import styles from "./level.module.css";
 import LockIcon from '@mui/icons-material/Lock';
-import { ToastContainer, toast } from "react-toastify";
-import { useRouter } from "next/router";
+import { ToastContainer, toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+import QuestionList from '@components/QuestionList/QuestionList';
+import Loading from '@components/Loading/Loading';
 
 const Level = ({ unlocked, level }) => {
     const [isAccordionOpen, setIsAccordionOpen] = useState(false);
@@ -16,8 +17,9 @@ const Level = ({ unlocked, level }) => {
     };
 
     const customStyles = {
-        '--background-color': 'lightgrey',
+        '--background-color': '#111A23',
         '--font-color': 'gold',
+        '--disabled-opacity': unlocked ? 1 : 0.5, // Adjust the opacity as needed
     };
 
     const [data, setData] = useState(null);
@@ -30,13 +32,12 @@ const Level = ({ unlocked, level }) => {
                 const data = await response.json();
                 console.log(data);
                 if (response.status === 200) {
-                    const data = await response.json();
                     setData(data.data);
-                }else if(response.status === 401){
+                } else if (response.status === 401) {
                     // router.push("/login");
                     console.log(response.data);
                 }
-                 else {
+                else {
                     console.error(`Failed to fetch data. Status: ${response.status}`);
                     toast.error(response.data.message)
                 }
@@ -45,26 +46,27 @@ const Level = ({ unlocked, level }) => {
             }
         };
 
-        if(unlocked === 1){
+        if (unlocked === 1 && isAccordionOpen) {
             fetchData();
         }
-    }, []);
+    }, [isAccordionOpen]);
 
     return (
-        <ToastContainer>
-            <div style={customStyles}>
-                hello
-                <Accordion disabled={!unlocked} onChange={handleAccordionChange}>
-                    <AccordionSummary>
-                        {unlocked ? null : <LockIcon />}
-                        <Typography style={{ color: 'var(--font-color)' }}>title</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>content</Typography>
-                    </AccordionDetails>
-                </Accordion>
-            </div>
-        </ToastContainer>
+        <div style={customStyles} >
+            <Accordion disabled={!unlocked} onChange={handleAccordionChange} sx={{ backgroundColor: "#111A24" }}>
+                <AccordionSummary className="p-4 border-b border-gray-300 dark:border-gray-700">
+                    {unlocked ? null : <LockIcon />}
+                    <Typography style={{ color: 'var(--font-color)' }}> Level {level + 1}</Typography>
+                </AccordionSummary>
+                <AccordionDetails >
+                    {data ? (
+                        <QuestionList question={data.question} />
+                    ) : (
+                        <Loading />
+                    )}
+                </AccordionDetails>
+            </Accordion>
+        </div>
     );
 };
 

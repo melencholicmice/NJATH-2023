@@ -1,4 +1,4 @@
-import Level from "./Level.js";
+import Level from "./level";
 
 export default function LeveLAccordians({ levelDetail }) {
     console.log(levelDetail);
@@ -6,7 +6,7 @@ export default function LeveLAccordians({ levelDetail }) {
         <>
             {
                 levelDetail.map((element, index) => (
-                    <Level key={index} unlocked={element} level={index}/>
+                    <Level key={index} unlocked={element} level={index} />
                 ))
             }
         </>
