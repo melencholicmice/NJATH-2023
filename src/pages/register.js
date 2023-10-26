@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/register.module.css";
+import stylesLogin from "@/styles/login.module.css";
 import { useRouter } from "next/router";
 import axios from "axios"
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
+import Link from "next/link";
 export default function Register() {
     const [details, setDetails] = useState({
         email: "",
@@ -49,7 +51,10 @@ export default function Register() {
         <div className="font-montserrat">
         <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
+            <Image src="/assets/treasure_box.svg" className={stylesLogin.treasurebox}
+                    width={1300}
+                    height={700}            
+                    ></Image>
             <div className={styles.mainContainer}>
                 <div
                     className={styles.registerBox}
@@ -130,9 +135,12 @@ export default function Register() {
                     <div className={styles.already}>
                         Already Registered?
                     </div>
+                        <Link className={styles.login} href="/login">
+                            Login
+                        </Link>
                 </div>
                 <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg"
+                    <Image src="/assets/treasure_box.svg" className={styles.treausre}
                     width={1300}
                     height={700}            
                     ></Image>   

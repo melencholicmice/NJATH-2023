@@ -3,6 +3,7 @@ import styles from "@/styles/question.module.css";
 import Image from 'next/image';
 // import Modal from "src\components\Question\Smodal.js"
 import Modal from '@components/Question/Smodal';
+import Nav from "@components/Navbar/nav";
 const Question = () => {
     let i = 1, q = 1, score = 40;
     const [open, setOpen] = useState(false);
@@ -10,6 +11,7 @@ const Question = () => {
     const handleClose = () => setOpen(false);
     return (
         <>
+        <Nav className='styles.navText' userStatus={false}></Nav>
         <Modal open={open} handleClose={handleClose}/>
         <div className={styles.mainContainer}>
             <div className={styles.scoreBox}>
