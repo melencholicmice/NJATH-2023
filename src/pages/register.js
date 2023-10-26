@@ -65,7 +65,7 @@ export default function Register() {
                     <div className={styles.title}>Register</div>
                     <div className={styles.inputDiv}>
                         <input
-                            className={styles.inputField}
+                            className="form_input"
                             type="name"
                             placeholder="Full Name"
                             onChange={(s) => {
@@ -77,7 +77,7 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="email"
-                            className={styles.inputField}
+                            className="form_input"
                             placeholder="Email"
                             onChange={(s) => {
                                 setDetails({ ...details, email: s.target.value });
@@ -88,8 +88,8 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="text"
-                            className={styles.inputField}
-                            placeholder="Username"
+                            className="form_input"
+                            placeholder="Create Username"
                             onChange={(s) => {
                                 setDetails({ ...details, username: s.target.value });
                             }}
@@ -99,7 +99,7 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="password"
-                            className={styles.inputField}
+                            className="form_input"
                             placeholder="Create New Password"
                             onChange={(s) => {
                                 setDetails({ ...details, pass: s.target.value });
@@ -110,7 +110,7 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="text"
-                            className={styles.inputField}
+                            className="form_input"
                             placeholder="Mobile Number"
                             onChange={(s) => {
                                 if (
@@ -136,7 +136,7 @@ export default function Register() {
                         Already Registered?
                     </div>
                         <Link className={styles.login} href="/login">
-                            Login
+                            Login Here
                         </Link>
                 </div>
                 <div className={styles.imageContainer}>

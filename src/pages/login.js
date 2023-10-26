@@ -137,7 +137,7 @@ export default function Login() {
                         </span>
                         <Link
                             href="/register"
-                            className="text-white/90 hover:text-white underline hover:text-njathgold text-sm mt-1.5 self-end font-medium"
+                            className="text-white/90 hover:text-njathgold underline hover:text-njathgold text-sm mt-1.5 self-end font-medium"
                         >
                             Register Now!
                         </Link>

@@ -15,7 +15,7 @@
     /* border: solid red; */
     text-align: center;
     overflow: hidden;
-    z-index: -25;
+    z-index: 10;
     /* background-color: rgb(11, 19, 34); */
     scroll-behavior: unset;
 }
@@ -66,6 +66,7 @@
     width: 474px;
     height: 520px;
     min-width: 250px;
+    gap: 1vh;
     /* min-height: 512px; */
     /* border-radius: 50px; */
     background: none;
@@ -106,7 +107,7 @@
     background: none;
     text-align: left;
     width: 396px;
-    z-index: -25;
+    z-index: 10;
     border-radius: 8px;
     @media (max-width: 500px) {
         /* border: solid; */
@@ -133,7 +134,7 @@
     width: 396px;
     /* border: solid red; */
     border-radius: 8px;
-    z-index: -25;
+    z-index: 10;
     @media (max-width: 500px) {
         /* border: solid; */
         flex-grow: 1;
@@ -155,7 +156,8 @@
     font-size: 18px;
     color:#121B24;
     font-weight: 700;
-    z-index: 1;
+    margin-top: 0.25vh;
+    z-index: 10;
     @media (max-width: 500px) {
         /* border: solid; */
         flex-grow: 1;
@@ -180,9 +182,12 @@
     color: #FDCC06;
 }
 .login{
+    @apply tracking-wide;
     font-size: 15px;
     margin-top: -5px;
     text-decoration: underline;
+    font-weight: 500;
+    
     /* color: #FDCC06; */
     @media (max-width: 500px) {
         margin-top: 0px;
@@ -208,7 +213,7 @@
     align-items: center;
     height: 550px;
     width: 50%; 
-    z-index: -50;
+    z-index: -10;
     /* padding-right: 20px; */
     /* border: solid red; */
     overflow: visible;
