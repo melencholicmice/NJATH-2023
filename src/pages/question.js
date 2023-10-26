@@ -1,34 +1,18 @@
 import React from 'react'
+import { useState } from 'react';
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
 // import { Navbar } from '@/componenets';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-const question = () => {
+import Modal from "../componenets/Question/Smodal"
+const Question = () => {
     let i = 1, q = 1, score = 40;
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    // console.log(open);
     return (
         <>
-        {/* <Navbar/> */}
-        <div>
-        <Modal
-            open={open}
-            onClose={handleClose}
-        >
-        <Box className={styles.modal}>
-          <Typography  fontWeight="700" fontSize="25px">
-            Hint
-          </Typography>
-          <Typography >
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
+        <Modal open={open} handleClose={handleClose}/>
         <div className={styles.mainContainer}>
             <div className={styles.scoreBox}>
                 <Image src="/assets/Vector.svg"
@@ -88,4 +72,4 @@ const question = () => {
     )
 }
 
-export default question
+export default Question

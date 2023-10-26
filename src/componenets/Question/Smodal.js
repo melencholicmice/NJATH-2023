@@ -4,25 +4,20 @@ import Modal from '@mui/material/Modal';
 import styles from '@/styles/question.module.css'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-const SModal = () => {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+const SModal = ({open,handleClose}) => {
   return (
-    <div>
-        <Modal
-            open={open}
-            onClose={handleClose}
-        >
+    <div style={{color:'white'}}>
+    <Modal open={open}
+      onClose={handleClose}>
         <Box className={styles.modal}>
-          <Typography  fontWeight="700" fontSize="25px">
+          <Typography  fontWeight="700" fontSize="25px" color="white">
             Hint
           </Typography>
-          <Typography >
+          <Typography marginTop={5} color='white'> 
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
           </Typography>
         </Box>
-      </Modal>
+    </Modal>
     </div>
   )
 }
