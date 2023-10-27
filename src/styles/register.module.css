@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-around;
     margin-top: 20px;
-    height: 93vh;
+    height: fit-content;
     width: 100%; 
     margin: 0;
     max-width: 100%;
@@ -16,10 +16,10 @@
     text-align: center;
     /* overflow: scroll; */
     /* z-index: -25; */
-    overflow: scroll;
+    /* overflow: scroll; */
     z-index: 10;
     /* background-color: rgb(11, 19, 34); */
-    scroll-behavior: unset;
+    /* scroll-behavior: unset; */
 }
 .treasurebox{
     position: fixed;
@@ -79,6 +79,7 @@
     width: 75%;
     width: 474px;
     height: 520px;
+    padding-bottom: 20%;
     /* min-width: 250px; */
     @media (max-height: 500px) {
         @media (min-width: 500px) {

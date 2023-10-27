@@ -7,6 +7,7 @@ const Bg = () => {
         height={2051}
         width={1497}
         className="bg_image"
+        alt="Background Pattern"
 
     />
   )

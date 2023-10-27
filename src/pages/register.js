@@ -8,8 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
 import Link from "next/link";
-// import Bg from "@components/BG/bg";
-
 export default function Register() {
     const [details, setDetails] = useState({
         email: "",
@@ -44,9 +42,9 @@ export default function Register() {
         }
     };
 
-    useEffect(() => {
-        if (window.screen.width < 250 || window.screen.height < 512) setValidity(false);
-    }, []);
+    // useEffect(() => {
+    //     if (window.screen.width < 250 || window.screen.height < 512) setValidity(false);
+    // }, []);
 
     return (
         <div className="font-montserrat">

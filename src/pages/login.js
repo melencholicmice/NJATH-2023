@@ -100,7 +100,7 @@ export default function Login() {
 
                     <div className="flex flex-col justify-end w-full">
                         <input
-                            className="form_input"
+                            className="form_input autofill:bg-transparent autofill:text-white"
                             type="password"
                             placeholder="Password"
                             onChange={(s) => {
