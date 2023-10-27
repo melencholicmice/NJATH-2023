@@ -3,7 +3,7 @@ import styles from "@/styles/register.module.css";
 import stylesLogin from "@/styles/login.module.css";
 import { useRouter } from "next/router";
 import axios from "axios"
-import {toast, ToastContainer} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
@@ -53,7 +53,7 @@ export default function Register() {
             <ToastContainer autoClose={2000} />
             <Image src="/assets/treasure_box.svg" className={stylesLogin.treasurebox}
                     width={1300}
-                    height={700}            
+                    height={700}
                     ></Image>
             <div className={styles.mainContainer}>
                 <div
@@ -130,8 +130,8 @@ export default function Register() {
                     {/* <div className={`${styles.redText} ${error ? "" : styles.invisible}`}>
                         {error ? error : "Noice"}
                     </div> */}
-                        <button onClick={() => register()}
-                            className={styles.submit}>Register</button>
+                    <button onClick={() => register()}
+                        className={styles.submit}>Register</button>
                     <div className={styles.already}>
                         Already Registered?
                     </div>
@@ -140,11 +140,17 @@ export default function Register() {
                         </Link>
                 </div>
                 <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg" className={styles.treausre}
+                    <Image src="/assets/treasure_box.svg"
                     width={1300}
-                    height={700}            
-                    ></Image>   
+                    height={700}
+                    ></Image>
                 </div>
+            </div>
+            <div className={styles.bottomchain}>
+                <Image src="/assets/Bottom-chain.svg"
+                    width={1300}
+                    height={450}
+                ></Image>
             </div>
         </div>
     );

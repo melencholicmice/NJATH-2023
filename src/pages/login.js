@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+
 import Nav from "../components/Navbar/nav";
 
 
@@ -24,10 +25,10 @@ export default function Login() {
 
         try {
             const response = await axios.get(loginApiUrl, config);
-            console.log(response);
+
             if (response.status === 200) {
                 toast.success(response.data.message);
-                router.push("/dashboard");
+                router.push("/levels");
             }
         } catch (error) {
             console.error('Error:', error);
@@ -65,7 +66,7 @@ export default function Login() {
                 toast.error(response.data.message);
             } else {
                 toast.success("Login Successful!");
-                router.push("/dashboard");
+                router.push("/levels");
             }
         } catch (error) {
             toast.error("Login Failed! please enter correct password and email");
