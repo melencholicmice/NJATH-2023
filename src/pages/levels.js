@@ -6,10 +6,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "@/components/Loading/Loading";
 import LeveLAccordians from "@components/Level/LevelAccordian";
-import styles from "@styles/levels.module.css";
+import Nav from "../components/Navbar/nav";
 
 const Levels = () => {
     const [data, setData] = useState(null);
+
     const router = useRouter();
     const participantDataApi = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/participant/`;
 
@@ -48,25 +49,17 @@ const Levels = () => {
     });
 
     return (
-        <div>
+        <div className="font-montserrat">
             <ToastContainer autoClose={2000} />
-            {/* <Navbar /> */}
-            <div className="app-background" />
-            <div>
-                {data ? (
-                    <>
-                        <div>{data.email}</div>
-                        <div>{data.points}</div>
-                        <div>{data.isBanned}</div>
-                        <div>{data.remainingLoan}</div>
-                        <div>{data.levelDetail}</div>
-                        <div>{data.username}</div>
-                        <LeveLAccordians levelDetail={data.levelDetail} />
-                    </>
-                ) : (
-                    <Loading />
-                )}
+            <Nav />
+            <div className="flex-between px-24 text-lg font-bold tracking-wide my-4 mt-10">
+                <p>Levels</p>
+                <p>
+                    Your Score: <span className="text-njathgold">{data ? data.points : "0"}</span>
+                </p>
             </div>
+            <div className="app-background" />
+            <div>{data ? <LeveLAccordians levelDetail={data.levelDetail} /> : <Loading />}</div>
         </div>
     );
 };

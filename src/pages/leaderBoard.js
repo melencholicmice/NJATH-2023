@@ -30,14 +30,17 @@ export default function StickyHeadTable() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.post("");
+            const config = {
+                withCredentials: true,
+            };
+
+            const response = await axios.get("", config);
 
             if (response.data.success === false) {
                 toast.error(response.data.message);
             } else {
                 const result = response.data;
 
-                
                 if (Array.isArray(result)) {
                     const sortedData = result.sort((a, b) => b.Points - a.Points);
                     const dataWithRanks = sortedData.map((item, index) => ({

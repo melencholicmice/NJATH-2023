@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import styles from "@/styles/question.module.css";
-import Image from 'next/image';
-import Modal from '@components/Question/Smodal';
-import { useRouter } from 'next/router';
+import Image from "next/image";
+import Modal from "@components/Question/Smodal";
+import { useRouter } from "next/router";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from 'react-toastify';
-import QuestionBox from '@components/QuestionBox/QuestionBox';
+import { ToastContainer, toast } from "react-toastify";
+import QuestionBox from "@components/QuestionBox/QuestionBox";
 
 function getQueryParameters(url) {
     const queryParameters = new URL(url, `${process.env.NEXT_PUBLIC_FRONTEND_URL}`).searchParams;
-    const level = parseInt(queryParameters.get('level'), 10);
-    const order = parseInt(queryParameters.get('order'), 10);
+    const level = parseInt(queryParameters.get("level"), 10);
+    const order = parseInt(queryParameters.get("order"), 10);
     return { level, order };
 }
 
 const Question = () => {
-    let i = 1, q = 1;
+    let i = 1,
+        q = 1;
     const router = useRouter();
 
     const [questionData, setQuestionData] = useState(null);
     const getQuestionData = async (ApiEndpoint, config) => {
-
-
         try {
             const response = await fetch(ApiEndpoint, config);
             console.log(response);
@@ -29,12 +28,11 @@ const Question = () => {
             if (response.ok) {
                 const data = await response.json();
                 setQuestionData(data.data);
-                console.log(data.data)
+                console.log(data.data);
             } else if (response.status === 400) {
                 toast.error("Invalid link");
                 // router.push('/levels');
-            }
-            else {
+            } else {
                 console.error(`Failed to fetch data. Status: ${response.status}`);
                 toast.error("Something Broke! Please Refresh");
             }
@@ -45,8 +43,7 @@ const Question = () => {
         }
     };
 
-    useEffect(() => {
-
+    const getData = async () => {
         const { level, order } = getQueryParameters(router.asPath);
 
         if (!level || !order) {
@@ -55,44 +52,46 @@ const Question = () => {
         }
 
         const config = {
-            credentials: 'include',
+            credentials: "include",
         };
-        const ApiEndpoint = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/participant/question?level=${Number(level)}&order=${Number(order)}`;
+        const ApiEndpoint = `${
+            process.env.NEXT_PUBLIC_BACKEND_URL
+        }/api/participant/question?level=${Number(level)}&order=${Number(order)}`;
         console.log("entered useEffect");
         if (!questionData) {
-            getQuestionData(ApiEndpoint, config);
+            await getQuestionData(ApiEndpoint, config);
         }
-        console.log(questionData)
-    });
+        console.log(questionData);
+    };
 
+    useEffect(() => {
+        getData();
+    }, );
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     console.log(`enterd jsx`);
-    if (questionData)
-        console.log(questionData.title);
+    if (questionData) console.log(questionData.title);
     return (
         <>
             {
-
                 // questionData ? (
-                    <>
+                <>
                     <p>{questionData}</p>
-                        {/* <ToastContainer>
+                    {/* <ToastContainer>
                             <QuestionBox
                                 imageUrl={questionData.imageUrl}
                                 title={questionData.title}
                                 description={questionData.description}
                             />
                         </ToastContainer > */}
-                    </>
+                </>
 
                 // ) : (<div>Loading...</div>)
             }
         </>
-    )
+    );
 };
 
-
-export default Question
+export default Question;
