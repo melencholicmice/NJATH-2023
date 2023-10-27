@@ -8,13 +8,18 @@
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
+    border: solid red;
   }
-  
+  .levels{
+    margin: 10px;
+    border: solid 2px #FDCC06;
+    border-radius: 7px;
+  }
   /* Common styles for both Level and Question components */
   .level,
   .question {
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid #ff0000;
     padding: 10px;
     min-width: 200px;
     text-align: center;

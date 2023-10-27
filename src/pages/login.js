@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import styles from "@/styles/login.module.css";
 import { useRouter } from "next/navigation";
@@ -8,8 +8,8 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
-import Nav from "../components/Navbar/nav";
 
+import Nav from "../components/Navbar/nav";
 
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
@@ -24,20 +24,19 @@ export default function Login() {
 
         try {
             const response = await axios.get(loginApiUrl, config);
-            console.log(response);
+
             if (response.status === 200) {
                 toast.success(response.data.message);
-                router.push("/dashboard");
+                router.push("/levels");
             }
         } catch (error) {
-            console.error('Error:', error);
+            console.error("Error:", error);
         }
-    }
-
+    };
 
     useEffect(() => {
         getLogin(router);
-    }, []);
+    });
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -51,21 +50,16 @@ export default function Login() {
         };
 
         try {
-            const response = await axios.post(
-                loginApiUrl,
-                details,
-                config
-            );
+            const response = await axios.post(loginApiUrl, details, config);
 
-            const cookies = response.headers['set-cookie'];
+            const cookies = response.headers["set-cookie"];
             if (response.status === 400) {
-                toast.error("Login Failed! wrong credentials")
-            }
-            else if (response.data.success === false) {
+                toast.error("Login Failed! wrong credentials");
+            } else if (response.data.success === false) {
                 toast.error(response.data.message);
             } else {
                 toast.success("Login Successful!");
-                router.push("/dashboard");
+                router.push("/levels");
             }
         } catch (error) {
             toast.error("Login Failed! please enter correct password and email");
@@ -76,22 +70,18 @@ export default function Login() {
         <>
             <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            
-            
-                    <Image
-                        src="/assets/treasure_box.svg"
-                        className={styles.treasurebox}
-                        width={900.44}
-                        height={1000}
-                        alt="Treasure image"
-                    ></Image>
-                
+
+            <Image
+                src="/assets/treasure_box.svg"
+                className={styles.treasurebox}
+                width={900.44}
+                height={1000}
+                alt=""
+				priority={4}
+            ></Image>
+
             <div className={styles.mainContainer}>
-            
-                <form
-                    className={styles.loginBox}
-                    onSubmit={submitHandler}
-                >
+                <form className={styles.loginBox} onSubmit={submitHandler}>
                     <div className="head_text">Login</div>
 
                     <div className="flex flex-col justify-end w-full">
@@ -117,19 +107,15 @@ export default function Login() {
                             required
                         />
                         <div className="text-white/90 hover:text-white hover:underline text-sm mt-1.5 self-end font-medium">
-                        <Link className="forgot-password-link" href="/forgotPass">
-                            Forgot Password?
-                        </Link>
-                    </div>
+                            <Link className="forgot-password-link" href="/forgotPass">
+                                Forgot Password?
+                            </Link>
+                        </div>
                     </div>
 
-                    
-
-                        <button
-                            type="submit"
-                            className="black_btn w-full h-12 rounded-sm text-xl">
-                            Login
-                        </button>
+                    <button type="submit" className="black_btn w-full h-12 rounded-sm text-xl">
+                        Login
+                    </button>
                     <div className={styles.registerRedir}>
                         <span className="text-white/70 font-medium">
                             Not registered yet?
@@ -143,9 +129,7 @@ export default function Login() {
                         </Link>
                     </div>
                 </form>
-                
             </div>
         </>
     );
 }
-

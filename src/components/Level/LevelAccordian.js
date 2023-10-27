@@ -1,14 +1,14 @@
 import Level from "./level";
-
+import styles from "@styles/levels.module.css";
 export default function LeveLAccordians({ levelDetail }) {
     console.log(levelDetail);
     return (
-        <>
-            {
-                levelDetail.map((element, index) => (
-                    <Level key={index} unlocked={element} level={index} />
-                ))
-            }
-        </>
+        <div>
+            {levelDetail.map((element, index) => (
+                <div className={styles.levels} key={index}>
+                    <Level unlocked={element} level={index} />
+                </div>
+            ))}
+        </div>
     );
 }

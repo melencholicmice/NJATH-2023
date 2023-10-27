@@ -49,7 +49,7 @@ const Level = ({ unlocked, level }) => {
         if (unlocked === 1 && isAccordionOpen) {
             fetchData();
         }
-    }, [isAccordionOpen]);
+    }, [isAccordionOpen, levelDetailApi, unlocked]);
 
     return (
         <div style={customStyles} >
@@ -60,7 +60,7 @@ const Level = ({ unlocked, level }) => {
                 </AccordionSummary>
                 <AccordionDetails >
                     {data ? (
-                        <QuestionList question={data.question} />
+                        <QuestionList  question={data.question} />
                     ) : (
                         <Loading />
                     )}

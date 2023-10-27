@@ -1,11 +1,12 @@
-"use client"
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+"use client";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Loading from '@/components/Loading/Loading';
-import LeveLAccordians from '@components/Level/LevelAccordian';
+import Loading from "@/components/Loading/Loading";
+import LeveLAccordians from "@components/Level/LevelAccordian";
+import styles from "@styles/levels.module.css";
 
 const Levels = () => {
     const [data, setData] = useState(null);
@@ -19,9 +20,9 @@ const Levels = () => {
             };
 
             try {
-                await new Promise(resolve => setTimeout(resolve, 3000));
+                await new Promise((resolve) => setTimeout(resolve, 3000));
                 const response = await axios.get(participantDataApi, axiosConfig);
-
+                console.log(response);
                 if (response.status === 200) {
                     setData(response.data.data);
                 } else if (response.status === 400 || response.status === 401) {
@@ -35,7 +36,7 @@ const Levels = () => {
                     if (error.response) {
                         if (error.response.status === 401) {
                             toast.error("Please Log in First");
-                            router.push('/login');
+                            router.push("/login");
                         } else {
                             toast.error("Something Broke! Please refresh");
                         }
@@ -44,27 +45,27 @@ const Levels = () => {
             }
         };
         fetchData();
-    }, []);
+    });
 
     return (
         <div>
             <ToastContainer autoClose={2000} />
             {/* <Navbar /> */}
             <div className="app-background" />
-                <div>
-                    {data ? (
-                        <>
-                            <div>{data.email}</div>
-                            <div>{data.points}</div>
-                            <div>{data.isBanned}</div>
-                            <div>{data.remainingLoan}</div>
-                            <div>{data.levelDetail}</div>
-                            <div>{data.username}</div>
-                            <LeveLAccordians levelDetail={data.levelDetail}/>
-                        </>
-                    ) : (
-                        <Loading/>
-                    )}
+            <div>
+                {data ? (
+                    <>
+                        <div>{data.email}</div>
+                        <div>{data.points}</div>
+                        <div>{data.isBanned}</div>
+                        <div>{data.remainingLoan}</div>
+                        <div>{data.levelDetail}</div>
+                        <div>{data.username}</div>
+                        <LeveLAccordians levelDetail={data.levelDetail} />
+                    </>
+                ) : (
+                    <Loading />
+                )}
             </div>
         </div>
     );

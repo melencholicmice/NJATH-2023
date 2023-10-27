@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/register.module.css";
 import stylesLogin from "@/styles/login.module.css";
 import { useRouter } from "next/router";
-import axios from "axios"
-import {toast, ToastContainer} from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
 import Link from "next/link";
@@ -16,8 +16,6 @@ export default function Register() {
         username: "",
         phone: "",
     });
-    // const [isValidSize, setValidity] = useState(true);
-    // const [error, setError] = useState(false);
     const router = useRouter();
 
     const register = async () => {
@@ -25,12 +23,12 @@ export default function Register() {
         else if (details.fullname.length == 0) toast.error("Please enter your Full Name");
         else if (details.phone.length != 10)
             toast.error("Please enter a valid Indian Phone Number");
-        else if (details.pass.length < 5 || details.pass.length > 32)
+        else if (details.password.length < 5 || details.password.length > 32)
             toast.error("Password must be between 5 and 32 characters");
         else {
             try {
                 const response = await axios.post(
-                    "https://4291-212-8-243-131.ngrok-free.app/api/auth/register",
+                    "http://localhost:8080/api/auth/register-participant",
                     details
                 );
                 if (response.data.success === false) toast.error(response.data.message);
@@ -38,6 +36,7 @@ export default function Register() {
                     router.push("/login");
                 }
             } catch (error) {
+                console.log(details);
                 toast.error("Something went wrong!");
             }
         }
@@ -49,11 +48,11 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
-        <Nav className="z-50" userStatus={false}></Nav>
+            <Nav className="styles.navText" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <Image src="/assets/treasure_box.svg" className={stylesLogin.treasurebox}
+            <Image src="/assets/treasure_box.svg" className={styles.treasurebox}
                     width={1300}
-                    height={700}            
+                    height={700}
                     ></Image>
             <div className={styles.mainContainer}>
                 <div
@@ -102,7 +101,7 @@ export default function Register() {
                             className="form_input"
                             placeholder="Create New Password"
                             onChange={(s) => {
-                                setDetails({ ...details, pass: s.target.value });
+                                setDetails({ ...details, password: s.target.value });
                             }}
                             required
                         />
@@ -140,10 +139,13 @@ export default function Register() {
                         </Link>
                 </div>
                 <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg" className={styles.treausre}
-                    width={1300}
-                    height={700}            
-                    ></Image>   
+                    <Image
+                        alt=""
+                        src="/assets/treasure_box.svg"
+                        width={1300}
+                        height={700}
+                        priority={4}
+                    ></Image>
                 </div>
             </div>
         </div>

@@ -1,74 +1,98 @@
-import React , {useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from "@/styles/question.module.css";
 import Image from 'next/image';
-// import Modal from "src\components\Question\Smodal.js"
 import Modal from '@components/Question/Smodal';
-import Nav from "@components/Navbar/nav";
+import { useRouter } from 'next/router';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from 'react-toastify';
+import QuestionBox from '@components/QuestionBox/QuestionBox';
+
+function getQueryParameters(url) {
+    const queryParameters = new URL(url, `${process.env.NEXT_PUBLIC_FRONTEND_URL}`).searchParams;
+    const level = parseInt(queryParameters.get('level'), 10);
+    const order = parseInt(queryParameters.get('order'), 10);
+    return { level, order };
+}
+
 const Question = () => {
-    let i = 1, q = 1, score = 40;
+    let i = 1, q = 1;
+    const router = useRouter();
+
+    const [questionData, setQuestionData] = useState(null);
+    const getQuestionData = async (ApiEndpoint, config) => {
+
+
+        try {
+            const response = await fetch(ApiEndpoint, config);
+            console.log(response);
+
+            if (response.ok) {
+                const data = await response.json();
+                setQuestionData(data.data);
+                console.log(data.data)
+            } else if (response.status === 400) {
+                toast.error("Invalid link");
+                // router.push('/levels');
+            }
+            else {
+                console.error(`Failed to fetch data. Status: ${response.status}`);
+                toast.error("Something Broke! Please Refresh");
+            }
+        } catch (error) {
+            // console.log("error");
+            // console.error(error);
+            toast.error("Something Broke! Please Refresh");
+        }
+    };
+
+    useEffect(() => {
+
+        const { level, order } = getQueryParameters(router.asPath);
+
+        if (!level || !order) {
+            toast.error("Invalid Link");
+            // router.push("/levels");
+        }
+
+        const config = {
+            credentials: 'include',
+        };
+        const ApiEndpoint = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/participant/question?level=${Number(level)}&order=${Number(order)}`;
+        console.log("entered useEffect");
+        if (!questionData) {
+            getQuestionData(ApiEndpoint, config);
+        }
+        console.log(questionData)
+    });
+
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    console.log(`enterd jsx`);
+    if (questionData)
+        console.log(questionData.title);
     return (
         <>
-        <Nav className='styles.navText' userStatus={false}></Nav>
-        <Modal open={open} handleClose={handleClose}/>
-        <div className={styles.mainContainer}>
-            <div className={styles.scoreBox}>
-                <Image src="/assets/Vector.svg"
-                    alt = "vector"
-                    width={23}
-                    height={25}
-                ></Image>
-                <div className={styles.qNo}>
-                        L0{i} Q0{q}
-                    </div>
-                <div>
-                    Your Score: {score}
-                </div>
-            </div>
-            <div className={styles.questionDiv}>
-                <div className={styles.descrpBox}>
-                    <p>There was a time when this wouldnt have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
-                    There was a time when this wouldnt have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
-                    There was a time when this wouldnt have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
-                    There was a time when this wouldnt have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
-                    There was a time when this wouldnt have bothered her. The fact that it did actually bother her bothered her even more. What had changed in her life that such a small thing could annoy her so much for the entire day? She knew it was ridiculous that she even took notice of it, yet she was still obsessing over it as she tried to fall asleep.
-                    </p>
-                </div>
+            {
 
-                    <img className={styles.queimg}
-                        src='https://user-images.githubusercontent.com/99478938/277416211-e246b1c6-b5b1-4151-a7f2-ee367a213783.png'>
-                    </img>
+                // questionData ? (
+                    <>
+                    <p>{questionData}</p>
+                        {/* <ToastContainer>
+                            <QuestionBox
+                                imageUrl={questionData.imageUrl}
+                                title={questionData.title}
+                                description={questionData.description}
+                            />
+                        </ToastContainer > */}
+                    </>
 
-            </div>
-            <div className={styles.ansBox}>
-                <input
-                    className={styles.ansText}
-                    placeholder='Type Your Answer Here'
-                    type='text'
-                >
-                </input>
-                <div>
-                <button className={styles.hint} onClick={handleOpen}>
-                        <div className={styles.CheckContent}>
-                            <Image src="/assets/Bulb.svg" alt ="Bulb" width={18} height={18} />
-                            <div>Hint</div>
-                        </div>
-                    </button>
-                </div>
-                <div>
-                    <button className={styles.Check}>
-                        <div className={styles.CheckContent}>
-                            <Image src="/assets/Check.svg" alt="Tick Mark" width={18} height={18} />
-                            <div>Check Answer</div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </div>
+                // ) : (<div>Loading...</div>)
+            }
         </>
     )
-}
+};
+
 
 export default Question

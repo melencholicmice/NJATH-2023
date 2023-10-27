@@ -91,7 +91,13 @@ export default function Login() {
                     </div>
                 </div>
                 <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg" width={900.44} height={1000}></Image>
+                    <Image
+                        alt="Treasure box"
+                        src="/assets/treasure_box.svg"
+                        width={900.44}
+                        height={1000}
+                        priority={4}
+                    />
                 </div>
             </div>
         </>
