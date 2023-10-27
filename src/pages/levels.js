@@ -23,7 +23,7 @@ const Levels = () => {
             try {
                 await new Promise((resolve) => setTimeout(resolve, 3000));
                 const response = await axios.get(participantDataApi, axiosConfig);
-                console.log(response);
+                console.log(response.data);
                 if (response.status === 200) {
                     setData(response.data.data);
                 } else if (response.status === 400 || response.status === 401) {
@@ -51,15 +51,19 @@ const Levels = () => {
     return (
         <div className="font-montserrat">
             <ToastContainer autoClose={2000} />
-            <Nav />
-            <div className="flex-between px-24 text-lg font-bold tracking-wide my-4 mt-10">
+            <Nav userStatus={true} />
+            
+            <div className="app-background" />
+            <div className="flex-start flex-col w-full p-20 max-sm:p-5">
+            <div className="max-md:text-sm gap-4 flex-between text-lg font-bold w-full tracking-wide my-4 mt-10">
                 <p>Levels</p>
-                <p>
+                <p className="align-right">
                     Your Score: <span className="text-njathgold">{data ? data.points : "0"}</span>
                 </p>
             </div>
-            <div className="app-background" />
-            <div>{data ? <LeveLAccordians levelDetail={data.levelDetail} /> : <Loading />}</div>
+            <div className="flex-start w-full">{data ? <LeveLAccordians levelDetail={data.levelDetail} /> : <Loading />}
+            </div>
+            </div>
         </div>
     );
 };

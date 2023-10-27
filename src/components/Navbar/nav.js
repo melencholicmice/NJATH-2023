@@ -30,7 +30,7 @@ const Nav = ({userStatus}) => {
       <div className="max-lg:hidden flex">
         { isUserLoggedIn? (
           <div className="flex-end gap-0">
-            <Link href="/dashboard" className="outline_btn">
+            <Link href="/levels" className="outline_btn">
             Levels</Link>
            
             <Link href="/leaderboard" className="outline_btn">
