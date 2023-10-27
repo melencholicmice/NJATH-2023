@@ -60,7 +60,7 @@ const Level = ({ unlocked, level }) => {
                 </AccordionSummary>
                 <AccordionDetails >
                     {data ? (
-                        <QuestionList question={data.question} />
+                        <QuestionList  question={data.question} />
                     ) : (
                         <Loading />
                     )}
