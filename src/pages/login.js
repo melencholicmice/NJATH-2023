@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 
 import Nav from "../components/Navbar/nav";
+import Bg from "@components/BG/bg";
 
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
@@ -68,9 +69,10 @@ export default function Login() {
 
     return (
         <>
+            {/* <Bg/> */}
             <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-
+            
             <Image
                 src="/assets/treasure_box.svg"
                 className={styles.treasurebox}

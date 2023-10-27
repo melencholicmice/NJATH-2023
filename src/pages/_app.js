@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "@/styles/globals.css";
 import { Loader } from "@/components";
+import Bg from "@components/BG/bg";
+
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
@@ -29,6 +31,7 @@ export default function App({ Component, pageProps }) {
     }, [router.events]);
     return (
         <main>
+            <Bg/>
             {loading ? <Loader /> : <Component {...pageProps} />}
         </main>
     );

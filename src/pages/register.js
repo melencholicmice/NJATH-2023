@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
 import Link from "next/link";
+// import Bg from "@components/BG/bg";
+
 export default function Register() {
     const [details, setDetails] = useState({
         email: "",
