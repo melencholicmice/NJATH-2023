@@ -1,104 +1,152 @@
-import React, { useState } from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/login.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { treasureBox } from "@/assets/TreasureBox";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image";
+
+import Nav from "../components/Navbar/nav";
+
 
 export default function Login() {
-    const [creds, setDetails] = useState({ email: "", password: "" });
+    const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
 
-    const authenticate = async () => {
-        if (!creds.email || !creds.password) {
+    const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
+
+    const getLogin = async (router) => {
+        const config = {
+            withCredentials: true,
+        };
+
+        try {
+            const response = await axios.get(loginApiUrl, config);
+
+            if (response.status === 200) {
+                toast.success(response.data.message);
+                router.push("/levels");
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+
+    useEffect(() => {
+        getLogin(router);
+    }, []);
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        if (!details.email || !details.password) {
             toast.error("Please fill in both email and password fields");
             return;
         }
+
+        const config = {
+            withCredentials: true,
+        };
+
         try {
             const response = await axios.post(
-                `https://4291-212-8-243-131.ngrok-free.app/api/auth/login`,
-                creds
+                loginApiUrl,
+                details,
+                config
             );
-            console.log(response);
-            if (response.data.success === false) {
+
+            const cookies = response.headers['set-cookie'];
+            if (response.status === 400) {
+                toast.error("Login Failed! wrong credentials")
+            }
+            else if (response.data.success === false) {
                 toast.error(response.data.message);
             } else {
                 toast.success("Login Successful!");
-                router.push("/dashboard");
+                router.push("/levels");
             }
         } catch (error) {
-            toast.error("Something went wrong!");
+            toast.error("Login Failed! please enter correct password and email");
         }
     };
 
     return (
         <>
+            <Nav className='styles.navText' userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
+            
+            
+                    <Image
+                        src="/assets/treasure_box.svg"
+                        className={styles.treasurebox}
+                        width={900.44}
+                        height={1000}
+                        alt="Treasure image"
+                    ></Image>
+                
             <div className={styles.mainContainer}>
-                <div
+            
+                <form
                     className={styles.loginBox}
-                    onKeyUp={(event) => {
-                        if (event.key == "Enter") authenticate();
-                    }}
+                    onSubmit={submitHandler}
                 >
-                    <div className={styles.title}>Login</div>
+                    <div className="head_text">Login</div>
 
-                    <div className={styles.inputDiv}>
+                    <div className="flex flex-col justify-end w-full">
                         <input
-                            className={styles.inputField}
+                            className="form_input w-full"
                             type="email"
                             placeholder="Email"
                             onChange={(s) => {
-                                setDetails({ email: s.target.value, password: creds.password });
+                                setDetails({ email: s.target.value, password: details.password });
                             }}
                             required
                         />
                     </div>
 
-                    <div className={styles.inputDiv}>
+                    <div className="flex flex-col justify-end w-full">
                         <input
-                            className={styles.inputField}
+                            className="form_input"
                             type="password"
                             placeholder="Password"
                             onChange={(s) => {
-                                setDetails({ email: creds.email, password: s.target.value });
+                                setDetails({ email: details.email, password: s.target.value });
                             }}
                             required
                         />
-                    </div>
-
-                    <div className={styles.forgotPassword}>
+                        <div className="text-white/90 hover:text-white hover:underline text-sm mt-1.5 self-end font-medium">
                         <Link className="forgot-password-link" href="/forgotPass">
                             Forgot Password?
                         </Link>
                     </div>
+                    </div>
 
-                    <div>
-                        <button onClick={() => authenticate()} className={styles.submit}>
+                    
+
+                        <button
+                            type="submit"
+                            className="black_btn w-full h-12 rounded-sm text-xl">
                             Login
                         </button>
-                    </div>
                     <div className={styles.registerRedir}>
-                        <span>
-                            Not registered Yet?
+                        <span className="text-white/70 font-medium">
+                            Not registered yet?
                             <br />
                         </span>
                         <Link
                             href="/register"
-                            style={{ textDecoration: "underline", color: "yellow" }}
+                            className="text-white/90 hover:text-white underline hover:text-njathgold text-sm mt-1.5 self-end font-medium"
                         >
                             Register Now!
                         </Link>
                     </div>
-                </div>
-                <div className={styles.imageContainer}>
-                    <div dangerouslySetInnerHTML={{ __html: treasureBox }}></div>
-                </div>
+                </form>
+                
             </div>
         </>
     );
 }
+

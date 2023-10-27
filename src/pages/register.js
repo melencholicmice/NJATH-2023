@@ -1,41 +1,42 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/register.module.css";
+import stylesLogin from "@/styles/login.module.css";
 import { useRouter } from "next/router";
-import Link from "next/link";
-import { treasureBox } from "@/assets/TreasureBox";
-import axios from "axios";
+import axios from "axios"
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import 'react-toastify/dist/ReactToastify.css';
+import Image from "next/image";
+import Nav from "@components/Navbar/nav";
+import Link from "next/link";
 export default function Register() {
-    const [creds, setDetails] = useState({
+    const [details, setDetails] = useState({
         email: "",
         fullname: "",
         password: "",
         username: "",
         phone: "",
     });
-    // const [isValidSize, setValidity] = useState(true);
-    // const [error, setError] = useState(false);
     const router = useRouter();
 
     const register = async () => {
-        if (creds.email.length == 0) toast.error("Please enter your Email address");
-        else if (creds.fullname.length == 0) toast.error("Please enter your Full Name");
-        else if (creds.phone.length != 10) toast.error("Please enter a valid Indian Phone Number");
-        else if (creds.pass.length < 5 || creds.pass.length > 32)
+        if (details.email.length == 0) toast.error("Please enter your Email address");
+        else if (details.fullname.length == 0) toast.error("Please enter your Full Name");
+        else if (details.phone.length != 10)
+            toast.error("Please enter a valid Indian Phone Number");
+        else if (details.password.length < 5 || details.password.length > 32)
             toast.error("Password must be between 5 and 32 characters");
         else {
             try {
                 const response = await axios.post(
-                    "https://4291-212-8-243-131.ngrok-free.app/api/auth/register",
-                    creds
+                    "http://localhost:8080/api/auth/register-participant",
+                    details
                 );
                 if (response.data.success === false) toast.error(response.data.message);
                 else {
                     router.push("/login");
                 }
             } catch (error) {
+                console.log(details);
                 toast.error("Something went wrong!");
             }
         }
@@ -46,9 +47,13 @@ export default function Register() {
     }, []);
 
     return (
-        <>
+        <div className="font-montserrat">
+        <Nav className='styles.navText' userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
+            <Image src="/assets/treasure_box.svg" className={stylesLogin.treasurebox}
+                    width={1300}
+                    height={700}
+                    ></Image>
             <div className={styles.mainContainer}>
                 <div
                     className={styles.registerBox}
@@ -63,7 +68,7 @@ export default function Register() {
                             type="name"
                             placeholder="Full Name"
                             onChange={(s) => {
-                                setDetails({ ...creds, fullname: s.target.value });
+                                setDetails({ ...details, fullname: s.target.value });
                             }}
                             required
                         />
@@ -74,7 +79,7 @@ export default function Register() {
                             className={styles.inputField}
                             placeholder="Email"
                             onChange={(s) => {
-                                setDetails({ ...creds, email: s.target.value });
+                                setDetails({ ...details, email: s.target.value });
                             }}
                             required
                         />
@@ -85,7 +90,7 @@ export default function Register() {
                             className={styles.inputField}
                             placeholder="Username"
                             onChange={(s) => {
-                                setDetails({ ...creds, username: s.target.value });
+                                setDetails({ ...details, username: s.target.value });
                             }}
                             required
                         />
@@ -96,7 +101,7 @@ export default function Register() {
                             className={styles.inputField}
                             placeholder="Create New Password"
                             onChange={(s) => {
-                                setDetails({ ...creds, pass: s.target.value });
+                                setDetails({ ...details, password: s.target.value });
                             }}
                             required
                         />
@@ -115,7 +120,7 @@ export default function Register() {
                                         0,
                                         s.target.value.length - 1
                                     );
-                                setDetails({ ...creds, phone: s.target.value });
+                                setDetails({ ...details, phone: s.target.value });
                             }}
                             required
                         />
@@ -124,21 +129,28 @@ export default function Register() {
                     {/* <div className={`${styles.redText} ${error ? "" : styles.invisible}`}>
                         {error ? error : "Noice"}
                     </div> */}
-
-                    <div className={styles.submitBtnContainer}>
-                        <button onClick={() => register()} className={styles.submit}>
-                            Register
-                        </button>
-                    </div>
-
-                    <Link className={styles.registerRedir} id="redir" href="/login">
+                    <button onClick={() => register()}
+                        className={styles.submit}>Register</button>
+                    <div className={styles.already}>
                         Already Registered?
-                    </Link>
+                    </div>
+                        <Link className={styles.login} href="/login">
+                            Login
+                        </Link>
                 </div>
                 <div className={styles.imageContainer}>
-                    <div dangerouslySetInnerHTML={{ __html: treasureBox }}></div>
+                    <Image src="/assets/treasure_box.svg"
+                    width={1300}
+                    height={700}
+                    ></Image>
                 </div>
             </div>
-        </>
+            <div className={styles.bottomchain}>
+                <Image src="/assets/Bottom-chain.svg"
+                    width={1300}
+                    height={450}
+                ></Image>
+            </div>
+        </div>
     );
 }

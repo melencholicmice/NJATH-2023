@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "@/styles/globals.css";
-import { Montserrat } from "next/font/google";
-import { Loader } from "@/componenets";
-
-
-const Montserrat_ = Montserrat({
-    style: "normal",
-    subsets: ["latin-ext"],
-    weight: ["300", "500", "700"],
-    display: "swap",
-});
+import { Loader } from "@/components";
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
@@ -37,7 +28,7 @@ export default function App({ Component, pageProps }) {
         };
     }, [router.events]);
     return (
-        <main className={Montserrat_.className}>
+        <main>
             {loading ? <Loader /> : <Component {...pageProps} />}
         </main>
     );

@@ -1,137 +1,143 @@
-:root {
-    --max-width: 1100px;
-    --border-radius: 12px;
-    --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
-        "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
-        "Courier New", monospace;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-    --primary-glow: conic-gradient(
-        from 180deg at 50% 50%,
-        #16abff33 0deg,
-        #0885ff33 55deg,
-        #54d6ff33 120deg,
-        #0071ff33 160deg,
-        transparent 360deg
-    );
-    --secondary-glow: radial-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
-
-    --tile-start-rgb: 239, 245, 249;
-    --tile-end-rgb: 228, 232, 233;
-    --tile-border: conic-gradient(
-        #00000080,
-        #00000040,
-        #00000030,
-        #00000020,
-        #00000010,
-        #00000010,
-        #00000080
-    );
-
-    --callout-rgb: 238, 240, 241;
-    --callout-border-rgb: 172, 175, 176;
-    --card-rgb: 180, 185, 188;
-    --card-border-rgb: 131, 134, 135;
+html{
+    
+    @apply bg-njathbg;
+    
+  
+    color: white;
+    margin: 10px;
 }
+/* .main {
+    width: 100vw;
+    min-height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    padding: 120px 24px 160px 24px;
+    pointer-events: none;
+  } */
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
+  
 
-        --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-        --secondary-glow: linear-gradient(
-            to bottom right,
-            rgba(1, 65, 255, 0),
-            rgba(1, 65, 255, 0),
-            rgba(1, 65, 255, 0.3)
-        );
-
-        --tile-start-rgb: 2, 13, 46;
-        --tile-end-rgb: 2, 5, 19;
-        --tile-border: conic-gradient(
-            #ffffff80,
-            #ffffff40,
-            #ffffff30,
-            #ffffff20,
-            #ffffff10,
-            #ffffff10,
-            #ffffff80
-        );
-
-        --callout-rgb: 20, 20, 20;
-        --callout-border-rgb: 108, 108, 108;
-        --card-rgb: 100, 100, 100;
-        --card-border-rgb: 200, 200, 200;
+  
+  @media screen and (max-width: 640px) {
+    .main {
+      padding: 0;
     }
-}
+  }
+  
+  /* Tailwind Styles */
+  
+  .app {
+    @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  }
+  
+  .black_btn {
+    @apply rounded-lg uppercase font-bold tracking-wider border-none bg-njathgold py-2.5 px-5 text-njathbg  transition-all hover:bg-white  text-center text-xs font-montserrat flex items-center justify-center;
+  }
+  
+  .outline_btn {
+    @apply bg-transparent uppercase font-bold tracking-wider py-2.5 px-2.5 text-white transition-all hover:text-njathgold text-center text-xs font-montserrat flex items-center justify-center;
+  }
+  .border_outline_btn {
+    @apply  rounded-lg uppercase tracking-wider border-solid border-2 border-njathbg bg-white py-2.5 px-5 text-njathbg transition-all hover:bg-njathbg hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+  }
+  
+  .border_outline {
+    @apply  rounded-full uppercase tracking-wider border-solid border-2 border-njathgold bg-transparent py-2.5 px-5 text-njathgold transition-all hover:border-white hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+  }
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
 
-html,
-body {
-    max-width: 100vw;
-    overflow-x: hidden;
-}
+  .head_text {
+    @apply  text-3xl font-extrabold leading-[1.15] text-white sm:text-4xl;
+  }
+  
+  .orange_gradient {
+    @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  }
+  
+  .green_gradient {
+    @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+  }
+  
+  .blue_gradient {
+    @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+  }
+  
+  .desc {
+    @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+  }
+  
+  .search_input {
+    @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-montserrat pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
+  }
+  
+  .copy_btn {
+    @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+  }
+  
+  .glassmorphism {
+    @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+  }
+  
+  .prompt_layout {
+    @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  }
+  
+  /* Feed Component */
+  .feed {
+    @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  }
+  
+  /* Form Component */
+  .form_textarea {
+    @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+  }
+  
+  .form_input {
+    @apply w-full flex bg-transparent rounded-lg mt-2 p-4 text-sm text-white/50 border-solid border-white/50 border-2 font-medium focus:text-white;
+  }
+  
+  /* Nav Component */
+  .logo_text {
+    @apply max-sm:hidden font-montserrat font-semibold text-lg text-black tracking-wide;
+  }
+  
+  .dropdown {
+    @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] flex flex-col gap-2.5 justify-end items-end;
+  }
+  
+  .dropdown_link {
+    @apply uppercase text-xs font-montserrat tracking-wider hover:text-gray-500;
+  }
+  
+  /* PromptCard Component */
+  .prompt_card {
+    @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  }
+  
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  
+  .flex-start {
+    @apply flex justify-start items-start;
+  }
+  
+  .flex-end {
+    @apply flex justify-end items-center;
+  }
+  
+  .flex-between {
+    @apply flex justify-between items-center ;
+  }
 
-body {
-    color: rgb(var(--foreground-rgb));
-    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
-        rgb(var(--background-start-rgb));
-}
+ 
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
 
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
-}
 
-.app-background {
-    position: absolute;
-    height: 100vh;
-    width: 100%;
-    background-color: rgb(11, 11, 38);
-    background-size: cover;
-    background-position: center;
-	filter: blur(5px);
-    z-index: -1;
-}
-
-.blurred {
-	filter: blur(25px);
-}
-
-html::after {
-    content: "";
-    position: absolute;
-    overflow: hidden;
-    align-self: center;
-    left: calc(50vw - 100vh);
-    top: -50vh;
-    width: 200vh;
-    height: 200vh;
-    border-radius: 100%;
-    background: radial-gradient(#000, #000d, #0008, #fff);
-    /* mix-blend-mode: multiply; */
-    transition: 0.1s;
-    transform: scale(0);
-    transform-origin: center;
-}
-
-html.is-leaving::after {
-    transition: 1s;
-    transform: scale(1);
-}
