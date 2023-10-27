@@ -64,7 +64,7 @@ export default function Register() {
                     <div className={styles.title}>Register</div>
                     <div className={styles.inputDiv}>
                         <input
-                            className="form_input"
+                            className={styles.inputField}
                             type="name"
                             placeholder="Full Name"
                             onChange={(s) => {
@@ -76,7 +76,7 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="email"
-                            className="form_input"
+                            className={styles.inputField}
                             placeholder="Email"
                             onChange={(s) => {
                                 setDetails({ ...details, email: s.target.value });
@@ -87,8 +87,8 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="text"
-                            className="form_input"
-                            placeholder="Create Username"
+                            className={styles.inputField}
+                            placeholder="Username"
                             onChange={(s) => {
                                 setDetails({ ...details, username: s.target.value });
                             }}
@@ -98,7 +98,7 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="password"
-                            className="form_input"
+                            className={styles.inputField}
                             placeholder="Create New Password"
                             onChange={(s) => {
                                 setDetails({ ...details, password: s.target.value });
@@ -109,7 +109,7 @@ export default function Register() {
                     <div className={styles.inputDiv}>
                         <input
                             type="text"
-                            className="form_input"
+                            className={styles.inputField}
                             placeholder="Mobile Number"
                             onChange={(s) => {
                                 if (
@@ -126,17 +126,16 @@ export default function Register() {
                         />
                     </div>
 
-                    {/* <div className={`${styles.redText} ${error ? "" : styles.invisible}`}>
+                    {/* <div className={${styles.redText} ${error ? "" : styles.invisible}}>
                         {error ? error : "Noice"}
                     </div> */}
-                        <button onClick={() => register()}
-                            className={styles.submit}>Register</button>
-                    <div className={styles.already}>
-                        Already Registered?
-                    </div>
-                        <Link className={styles.login} href="/login">
-                            Login Here
-                        </Link>
+                    <button onClick={() => register()} className={styles.submit}>
+                        Register
+                    </button>
+                    <div className={styles.already}>Already Registered?</div>
+                    <Link className={styles.login} href="/login">
+                        Login
+                    </Link>
                 </div>
                 <div className={styles.imageContainer}>
                     <Image

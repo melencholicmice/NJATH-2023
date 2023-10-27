@@ -34,19 +34,19 @@ html {
 }
 
 .black_btn {
-    @apply rounded-lg uppercase font-bold tracking-wider border-none bg-njathgold py-2.5 px-5 text-njathbg  transition-all hover:bg-white  text-center text-xs font-montserrat flex items-center justify-center;
+    @apply rounded-lg uppercase  tracking-wide border-none bg-njathgold py-2.5 px-5 text-njathbg  transition-all hover:bg-white  text-center text-xs font-montserrat flex items-center justify-center font-bold;
 }
 
 .outline_btn {
-    @apply bg-transparent uppercase font-bold tracking-wider py-2.5 px-2.5 text-white transition-all hover:text-njathgold text-center text-xs font-montserrat flex items-center justify-center;
+    @apply bg-transparent uppercase  tracking-wide py-2.5 px-2.5 text-white transition-all hover:text-njathgold text-center text-xs font-montserrat flex items-center justify-center font-bold;
 }
 .border_outline_btn {
-    @apply rounded-lg uppercase tracking-wider border-solid border-2 border-njathbg bg-white py-2.5 px-5 text-njathbg transition-all hover:bg-njathbg hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+    @apply rounded-lg uppercase tracking-wide border-solid border-2 border-njathbg bg-white py-2.5 px-5 text-njathbg transition-all hover:bg-njathbg hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
 }
 
 
 .border_outline {
-    @apply rounded-full uppercase tracking-wider border-solid border-2 border-njathgold bg-transparent py-2.5 px-5 text-njathgold transition-all hover:border-white hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
+    @apply rounded-full uppercase tracking-wide border-solid border-2 border-njathgold bg-transparent py-2.5 px-5 text-njathgold transition-all hover:border-white hover:text-white text-center text-xs font-montserrat flex hover:text-white items-center justify-center font-bold;
 }
 
 .head_text {
