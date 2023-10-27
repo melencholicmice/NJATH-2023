@@ -3,8 +3,6 @@ import Nav from "@components/Navbar/nav";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import Image from "next/image";
-import { Button } from "@mui/material";
-import GuestFooter from "@components/Footer/Footer";
 import Link from "next/link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -22,14 +20,14 @@ export default function Landing() {
                     src="/assets/Typeface.svg"
                     width={448.26}
                     height={231}
-                    className="rounded-full w-80 lg:w-96"
+                    className="w-80 lg:w-96"
                     alt="Njath"
                 />
-                <p className="font-bold text-xs mt-3 tracking-wider lg:tracking-widest ">
+                <p className="font-bold text-xs text-center mt-3 tracking-wider lg:tracking-widest ">
                     NOT JUST ANOTHER TREASURE HUNT
                 </p>
                 <p className="mt-24 font-bold tracking-wide">What is NJATH?</p>
-                <p className="text-sm mt-4 w-7/12 text-center tracking-normal">
+                <p className="text-sm mt-4 w-7/12 text-center tracking-normal" style={{minWidth: 250}}>
                     NJATH(Not Just Another Treasure Hunt) is a Solo Online Treasure Hunt contest
                     where you go on tackling questions to uncover the hidden solutions!
                 </p>
@@ -38,17 +36,18 @@ export default function Landing() {
                     width={616}
                     height={416}
                     className="rounded-full -mt-6"
-                    alt="Njath"
+                    alt=""
+					priority={4}
                 />
                 <div className="flex-row flex-center -mt-8">
-                    <Link href="/register" className="black_btn mr-8">
+                    <Link href="/register" className="black_btn" style={{marginRight: "max(2.5vw, 5px)"}}>
                         Register
                     </Link>
-                    <Link href="https://drive.google.com/file/d/1l-nZIooehhQXzwERm4cDheG6Zpli3AXM/view?pli=1" className="border_outline ml-8">
+                    <Link href="https://drive.google.com/file/d/1l-nZIooehhQXzwERm4cDheG6Zpli3AXM/view?pli=1" className="border_outline" style={{marginLeft: "max(2.5vw, 5px)", borderRadius: 10}}>
                         Rulebook
                     </Link>
                 </div>
-                <div className="flex-between mt-28 mb-8 w-full h-1/2 px-10 items-start">
+                <div className="footer flex justify-evenly mt-28 mb-8 w-full h-1/2 px-10 items-start">
                     <div className="flex-column gap-6 self-start">
                         <Image
                             src="/assets/Celesta-Icon.svg"
@@ -87,7 +86,7 @@ export default function Landing() {
                             </Link>
                         </div>
                     </div>
-                    <div className="self-start max-md:hidden">
+                    <div className="self-start max-md:hidden mr-5 ml-5">
                         <Image
                             src="/assets/Verdant-Odyssey.svg"
                             width={347.36}

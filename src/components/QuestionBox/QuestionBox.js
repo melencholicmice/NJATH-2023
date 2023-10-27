@@ -8,43 +8,33 @@ function QuestionBox(props) {
     // console.log(description);
     return (
         <>
-
             {/* <Modal open={open} handleClose={handleClose} /> */}
             <div className={styles.mainContainer}>
                 <div className={styles.scoreBox}>
-                    <Image src="/assets/Vector.svg"
-                        width={23}
-                        height={25}
-                    ></Image>
-                    <div className={styles.qNo}>
-                        {title}
-                    </div>
-
+                    <Image alt="" src="/assets/Vector.svg" width={23} height={25}></Image>
+                    <div className={styles.qNo}>{title}</div>
                 </div>
                 <div className={styles.questionDiv}>
                     <div className={styles.descrpBox}>
                         <p>{description} nivlhnrgknerng nergnkbhetoin</p>
                     </div>
 
-                    {
-                        questionData.imageUrl ? (<img className={styles.queimg}
-                            src={imageUrl}>
-                        </img>) : (<></>)
-                    }
-
-
+                    {questionData.imageUrl ? (
+                        <img alt="Question" className={styles.queimg} src={imageUrl}></img>
+                    ) : (
+                        <></>
+                    )}
                 </div>
                 <div className={styles.ansBox}>
                     <input
                         className={styles.ansText}
-                        placeholder='Type Your Answer Here'
-                        type='text'
-                    >
-                    </input>
+                        placeholder="Type Your Answer Here"
+                        type="text"
+                    ></input>
                     <div>
                         <button className={styles.hint} onClick={handleOpen}>
                             <div className={styles.CheckContent}>
-                                <Image src="/assets/Bulb.svg" width={18} height={18} />
+                                <Image alt="Hint" src="/assets/Bulb.svg" width={18} height={18} />
                                 <div>Hint</div>
                             </div>
                         </button>
@@ -52,7 +42,12 @@ function QuestionBox(props) {
                     <div>
                         <button className={styles.Check}>
                             <div className={styles.CheckContent}>
-                                <Image src="/assets/Check.svg" width={18} height={18} />
+                                <Image
+                                    alt="Check Answer"
+                                    src="/assets/Check.svg"
+                                    width={18}
+                                    height={18}
+                                />
                                 <div>Check Answer</div>
                             </div>
                         </button>
@@ -60,7 +55,6 @@ function QuestionBox(props) {
                 </div>
             </div>
         </>
-
     );
 }
 export default QuestionBox;

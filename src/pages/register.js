@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import styles from "@/styles/register.module.css";
 import stylesLogin from "@/styles/login.module.css";
 import { useRouter } from "next/router";
-import axios from "axios"
+import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
 import Link from "next/link";
@@ -48,12 +48,16 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
-        <Nav className='styles.navText' userStatus={false}></Nav>
+            <Nav className="styles.navText" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <Image src="/assets/treasure_box.svg" className={stylesLogin.treasurebox}
-                    width={1300}
-                    height={700}
-                    ></Image>
+            <Image
+                alt=""
+                src="/assets/treasure_box.svg"
+                className={stylesLogin.treasurebox}
+                width={1300}
+                height={700}
+                priority={4}
+            />
             <div className={styles.mainContainer}>
                 <div
                     className={styles.registerBox}
@@ -129,27 +133,26 @@ export default function Register() {
                     {/* <div className={`${styles.redText} ${error ? "" : styles.invisible}`}>
                         {error ? error : "Noice"}
                     </div> */}
-                    <button onClick={() => register()}
-                        className={styles.submit}>Register</button>
-                    <div className={styles.already}>
-                        Already Registered?
-                    </div>
-                        <Link className={styles.login} href="/login">
-                            Login
-                        </Link>
+                    <button onClick={() => register()} className={styles.submit}>
+                        Register
+                    </button>
+                    <div className={styles.already}>Already Registered?</div>
+                    <Link className={styles.login} href="/login">
+                        Login
+                    </Link>
                 </div>
                 <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg"
-                    width={1300}
-                    height={700}
+                    <Image
+                        alt=""
+                        src="/assets/treasure_box.svg"
+                        width={1300}
+                        height={700}
+                        priority={4}
                     ></Image>
                 </div>
             </div>
             <div className={styles.bottomchain}>
-                <Image src="/assets/Bottom-chain.svg"
-                    width={1300}
-                    height={450}
-                ></Image>
+                <Image alt="" src="/assets/Bottom-chain.svg" width={1300} height={450}></Image>
             </div>
         </div>
     );

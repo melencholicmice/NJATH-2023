@@ -49,7 +49,7 @@ const Level = ({ unlocked, level }) => {
         if (unlocked === 1 && isAccordionOpen) {
             fetchData();
         }
-    }, [isAccordionOpen]);
+    }, [isAccordionOpen, levelDetailApi, unlocked]);
 
     return (
         <div style={customStyles} >
