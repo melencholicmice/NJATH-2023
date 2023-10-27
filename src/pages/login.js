@@ -69,7 +69,7 @@ export default function Login() {
 
     return (
         <>
-            {/* <Bg/> */}
+
             <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
 

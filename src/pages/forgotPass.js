@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import styles from "@/styles/forgotPass.module.css";
+import styles from "@/styles/login.module.css";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Nav from "@components/Navbar/nav";
 
 export default function Login() {
     const [details, setDetails] = useState({ email: "", phone: "" });
@@ -37,8 +38,17 @@ export default function Login() {
 
     return (
         <>
+            <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
+
+            <Image
+                src="/assets/treasure_box.svg"
+                className={styles.treasurebox}
+                width={900.44}
+                height={1000}
+                alt="Treasure image"
+            ></Image>
+
             <div className={styles.mainContainer}>
                 <div
                     className={styles.loginBox}
@@ -46,11 +56,11 @@ export default function Login() {
                         if (event.key == "Enter") changePass();
                     }}
                 >
-                    <div className={styles.title}>Enter your details</div>
+                    <div className="head_text">Find your Account</div>
 
-                    <div className={styles.inputDiv}>
+                    <div className="flex flex-col justify-end w-full">
                         <input
-                            className={styles.inputField}
+                            className="form_input w-full"
                             type="email"
                             placeholder="Email"
                             onChange={(s) => {
@@ -60,9 +70,9 @@ export default function Login() {
                         />
                     </div>
 
-                    <div className={styles.inputDiv}>
+                    <div className="flex flex-col justify-end w-full">
                         <input
-                            className={styles.inputField}
+                            className="form_input w-full"
                             type="phone"
                             placeholder="Mobile Number"
                             onChange={(s) => {
@@ -72,15 +82,12 @@ export default function Login() {
                         />
                     </div>
 
-                    <div>
-                        <button onClick={() => changePass()} className={styles.submit}>
-                            Proceed -&gt;
+                        <button onClick={() => changePass()} className="black_btn w-full h-12 rounded-sm text-xl">
+                            Proceed
                         </button>
-                    </div>
+                    
                 </div>
-                <div className={styles.imageContainer}>
-                    <Image src="/assets/treasure_box.svg" alt="Treasure Box" width={900.44} height={1000} priority={4} />
-                </div>
+             
             </div>
         </>
     );
