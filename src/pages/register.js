@@ -50,14 +50,10 @@ export default function Register() {
         <div className="font-montserrat">
             <Nav className="styles.navText" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <Image
-                alt=""
-                src="/assets/treasure_box.svg"
-                className={stylesLogin.treasurebox}
-                width={1300}
-                height={700}
-                priority={4}
-            />
+            <Image src="/assets/treasure_box.svg" className={styles.treasurebox}
+                    width={1300}
+                    height={700}
+                    ></Image>
             <div className={styles.mainContainer}>
                 <div
                     className={styles.registerBox}
@@ -150,9 +146,6 @@ export default function Register() {
                         priority={4}
                     ></Image>
                 </div>
-            </div>
-            <div className={styles.bottomchain}>
-                <Image alt="" src="/assets/Bottom-chain.svg" width={1300} height={450}></Image>
             </div>
         </div>
     );
