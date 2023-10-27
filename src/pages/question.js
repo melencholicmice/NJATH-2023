@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styles from "@/styles/question.module.css";
-import Image from "next/image";
-import Modal from "@components/Question/Smodal";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import QuestionBox from "@components/QuestionBox/QuestionBox";
@@ -15,30 +12,25 @@ function getQueryParameters(url) {
 }
 
 const Question = () => {
-    let i = 1,
-        q = 1;
     const router = useRouter();
 
     const [questionData, setQuestionData] = useState(null);
+
     const getQuestionData = async (ApiEndpoint, config) => {
         try {
             const response = await fetch(ApiEndpoint, config);
-            console.log(response);
 
             if (response.ok) {
                 const data = await response.json();
                 setQuestionData(data.data);
-                console.log(data.data);
             } else if (response.status === 400) {
-                toast.error("Invalid link");
-                // router.push('/levels');
+                toast.error("This Question is locked");
+                router.push("/levels")
             } else {
                 console.error(`Failed to fetch data. Status: ${response.status}`);
-                toast.error("Something Broke! Please Refresh");
+                router.push("/levels")
             }
         } catch (error) {
-            // console.log("error");
-            // console.error(error);
             toast.error("Something Broke! Please Refresh");
         }
     };
@@ -48,47 +40,41 @@ const Question = () => {
 
         if (!level || !order) {
             toast.error("Invalid Link");
-            // router.push("/levels");
         }
 
         const config = {
             credentials: "include",
         };
-        const ApiEndpoint = `${
-            process.env.NEXT_PUBLIC_BACKEND_URL
-        }/api/participant/question?level=${Number(level)}&order=${Number(order)}`;
-        console.log("entered useEffect");
-        if (!questionData) {
-            await getQuestionData(ApiEndpoint, config);
-        }
-        console.log(questionData);
-    };
+        const ApiEndpoint = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/participant/question?level=${Number(level)}&order=${Number(order)}`;
+
+        await getQuestionData(ApiEndpoint, config);
+    }
 
     useEffect(() => {
-        getData();
-    }, );
+        const fetchData = async () => {
+            const res = await getData();
+            console.log(res);
+        };
+
+        fetchData();
+    }, []);
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    console.log(`enterd jsx`);
-    if (questionData) console.log(questionData.title);
+
     return (
         <>
-            {
-                // questionData ? (
-                <>
-                    <p>{questionData}</p>
-                    {/* <ToastContainer>
-                            <QuestionBox
-                                imageUrl={questionData.imageUrl}
-                                title={questionData.title}
-                                description={questionData.description}
-                            />
-                        </ToastContainer > */}
-                </>
-
-                // ) : (<div>Loading...</div>)
+            <ToastContainer autoClose={2000} />
+            {questionData !== null ? (
+                <QuestionBox
+                    imageUrl={questionData.imageUrl}
+                    title={questionData.title}
+                    description={questionData.description}
+                    level={questionData.level}
+                    order={questionData.order}
+                />
+            ) : (<div> Loading ...</div>)
             }
         </>
     );

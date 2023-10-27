@@ -72,18 +72,22 @@ export default function Login() {
             {/* <Bg/> */}
             <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            
+
+
             <Image
                 src="/assets/treasure_box.svg"
                 className={styles.treasurebox}
                 width={900.44}
                 height={1000}
-                alt=""
-				priority={4}
+                alt="Treasure image"
             ></Image>
 
             <div className={styles.mainContainer}>
-                <form className={styles.loginBox} onSubmit={submitHandler}>
+
+                <form
+                    className={styles.loginBox}
+                    onSubmit={submitHandler}
+                >
                     <div className="head_text">Login</div>
 
                     <div className="flex flex-col justify-end w-full">
@@ -115,7 +119,11 @@ export default function Login() {
                         </div>
                     </div>
 
-                    <button type="submit" className="black_btn w-full h-12 rounded-sm text-xl">
+
+
+                    <button
+                        type="submit"
+                        className="black_btn w-full h-12 rounded-sm text-xl">
                         Login
                     </button>
                     <div className={styles.registerRedir}>
@@ -131,6 +139,7 @@ export default function Login() {
                         </Link>
                     </div>
                 </form>
+
             </div>
         </>
     );

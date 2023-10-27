@@ -28,7 +28,7 @@
     font-size: 28px;
     background: none;
     text-align: left;
-    color: rgba(253, 204, 6, 1);  
+    color: rgba(253, 204, 6, 1);
     flex-grow: 1;
 }
 .descrpBox{
@@ -142,7 +142,7 @@
         /* margin-top: 5px;
         margin-bottom: 5px; */
         /* flex-grow: 1; */
-        
+
     }
     /* height: 15px; */
 }
@@ -184,7 +184,7 @@
     align-items: center; /* Align items vertically in the middle */
     gap: 8px; /* Add spacing between the image and text (adjust as needed) */
     border-radius: 20px;
-  }  
+  }
 .questionDiv{
     display: flex;
     align-items: stretch;
