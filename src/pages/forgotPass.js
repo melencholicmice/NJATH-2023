@@ -17,13 +17,13 @@ export default function Login() {
             toast.error("Please enter your email address");
             return;
         }
-        if (details.phone.length() != 10) {
+        if (details.phone.length !== 10) {
             toast.error("Please enter a valid phone number");
             return;
         }
         try {
             const response = await axios.post(
-                `https://4291-212-8-243-131.ngrok-free.app/api/auth/forget-password`,
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/forget-password`,
                 details
             );
             if (response.data.success === false) {
@@ -82,12 +82,13 @@ export default function Login() {
                         />
                     </div>
 
-                        <button onClick={() => changePass()} className="black_btn w-full h-12 rounded-sm text-xl">
-                            Proceed
-                        </button>
-                    
+                    <button
+                        onClick={() => changePass()}
+                        className="black_btn w-full h-12 rounded-sm text-xl"
+                    >
+                        Proceed
+                    </button>
                 </div>
-             
             </div>
         </>
     );

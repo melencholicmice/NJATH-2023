@@ -28,7 +28,7 @@ export default function Register() {
         else {
             try {
                 const response = await axios.post(
-                    "http://localhost:8080/api/auth/register-participant",
+                    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register-participant`,
                     details
                 );
                 if (response.data.success === false) toast.error(response.data.message);
@@ -36,7 +36,7 @@ export default function Register() {
                     router.push("/login");
                 }
             } catch (error) {
-                console.log(details);
+                console.log(error);
                 toast.error("Something went wrong!");
             }
         }
@@ -50,10 +50,13 @@ export default function Register() {
         <div className="font-montserrat">
             <Nav className="styles.navText" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
-            <Image src="/assets/treasure_box.svg" className={styles.treasurebox}
-                    width={1300}
-                    height={700}
-                    ></Image>
+            <Image
+                src="/assets/treasure_box.svg"
+                className={styles.treasurebox}
+                width={1300}
+                height={700}
+                alt="treasure box"
+            ></Image>
             <div className={styles.mainContainer}>
                 <div
                     className={styles.registerBox}
@@ -139,8 +142,8 @@ export default function Register() {
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
-                        alt=""
                         src="/assets/treasure_box.svg"
+                        alt="treasurebox"
                         width={1300}
                         height={700}
                         priority={4}

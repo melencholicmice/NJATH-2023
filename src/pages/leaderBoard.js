@@ -7,16 +7,16 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
-import Nav from "./nav";
+import Nav from "@components/Navbar/nav";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 
 const columns = [
     { id: "Rank", label: "Rank", minWidth: 100 },
-    { id: "Name", label: "Name", minWidth: 170 },
+    { id: "username", label: "Name", minWidth: 170 },
     {
-        id: "Points",
+        id: "points",
         label: "Points",
         minWidth: 170,
         align: "right",
@@ -29,38 +29,43 @@ export default function StickyHeadTable() {
     const [data, setData] = React.useState([]);
 
     const fetchData = async () => {
+        console.log("entered");
         try {
             const config = {
                 withCredentials: true,
             };
 
-            const response = await axios.get("", config);
+            const response = await axios.get(
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/participant/leaderboard`,
+                config
+            );
 
-            if (response.data.success === false) {
-                toast.error(response.data.message);
+            const result = response.data.data;
+            console.log(result);
+
+            if (Array.isArray(result)) {
+                const sortedData = result.sort((a, b) => b.points - a.points);
+                const dataWithRanks = sortedData.map((item, index) => ({
+                    Rank: index + 1,
+                    username: item.username,
+                    points: item.points,
+                }));
+
+                setData(dataWithRanks);
             } else {
-                const result = response.data;
-
-                if (Array.isArray(result)) {
-                    const sortedData = result.sort((a, b) => b.Points - a.Points);
-                    const dataWithRanks = sortedData.map((item, index) => ({
-                        Rank: index + 1,
-                        Name: item.Name,
-                        Points: item.Points,
-                    }));
-
-                    setData(dataWithRanks);
-                } else {
-                    toast.error("Data format is incorrect");
-                }
+                toast.error("Data format is incorrect");
             }
         } catch (error) {
+            console.log(error);
             toast.error("Error fetching data");
         }
     };
 
     React.useEffect(() => {
-        fetchData();
+        async function fetchDataAndSetData() {
+            await fetchData();
+        }
+        fetchDataAndSetData();
     }, []);
 
     const handleChangePage = (event, newPage) => {
@@ -73,10 +78,10 @@ export default function StickyHeadTable() {
     };
 
     return (
-        <>
-            <Nav className="styles.navText"></Nav>
+        <div>
+            <Nav classusername="styles.navText"></Nav>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
+            <div classusername="app-background" />
             <Paper
                 sx={{
                     width: "80%",
@@ -110,7 +115,12 @@ export default function StickyHeadTable() {
                             {data
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row) => (
-                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.Name}>
+                                    <TableRow
+                                        hover
+                                        role="checkbox"
+                                        tabIndex={-1}
+                                        key={row.username}
+                                    >
                                         {columns.map((column) => (
                                             <TableCell
                                                 key={column.id}
@@ -133,9 +143,9 @@ export default function StickyHeadTable() {
                     page={page}
                     onPageChange={handleChangePage}
                     onRowsPerPageChange={handleChangeRowsPerPage}
-                    sx={{ color: "gold" }}
+                    sx={{ color: "#111A23", backgroundColor: "gold" }}
                 />
             </Paper>
-        </>
+        </div>
     );
 }
