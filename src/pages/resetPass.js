@@ -8,10 +8,17 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
 
+function getQueryParameters(url) {
+    const queryParameters = new URL(url, `${process.env.NEXT_PUBLIC_FRONTEND_URL}`).searchParams;
+    const token = queryParameters.get("token");
+    return token;
+}
+
 export default function Login() {
     const [details, setDetails] = useState({ password: "", confirmPassword: "" });
     const router = useRouter();
-    const { token } = router.query;
+    const token = getQueryParameters(router.asPath);
+
 
     const resetPass = async () => {
         if (!details.password) {
@@ -23,13 +30,13 @@ export default function Login() {
             return;
         }
         if (details.confirmPassword !== details.password) {
-            toast.error("Passwords donot match");
+            toast.error("Passwords do not match");
             return;
         }
         try {
             const response = await axios.post(
-                `https://4291-212-8-243-131.ngrok-free.app/api/auth/reset-password/`,
-                details.password
+                `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/reset-password/${token}`,
+                { password: details.password }
             );
             if (response.data.success === false) {
                 toast.error(response.data.message);
@@ -38,6 +45,7 @@ export default function Login() {
                 router.push("/login");
             }
         } catch (error) {
+            console.log(error);
             toast.error("Something went wrong!");
         }
     };

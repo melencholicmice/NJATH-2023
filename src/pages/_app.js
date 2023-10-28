@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Image from "next/image";
 import Loader from "@/components/Loading/Loader.js";
 import Bg from "@components/BG/bg";
+import { AuthProvider } from "@context/AuthContext";
 
 
 export default function App({ Component, pageProps }) {
@@ -32,17 +33,19 @@ export default function App({ Component, pageProps }) {
     }, [router.events]);
     return (
         <main>
-            <Bg/>
-            {loading ? <Loader /> : <Component {...pageProps} />}
-            <div className=" foot_cap">
-            <Image
-            src="/assets/foot_cap.svg"
-            alt="footer caption"
-            height={29}
-            width={565}
-           className="min-w-[200px] w-2/6 max-w-[300px]"
-            />
-            </div>
-        </main>
+            <AuthProvider>
+                <Bg />
+                {loading ? <Loader /> : <Component {...pageProps} />}
+                <div className=" foot_cap">
+                    <Image
+                        src="/assets/foot_cap.svg"
+                        alt="footer caption"
+                        height={29}
+                        width={565}
+                        className="min-w-[200px] w-2/6 max-w-[300px]"
+                    />
+                </div>
+            </AuthProvider>
+        </main >
     );
 }

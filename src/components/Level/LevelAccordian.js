@@ -1,7 +1,7 @@
 import Level from "./level";
 import styles from "@styles/levels.module.css";
 export default function LeveLAccordians({ levelDetail }) {
-    console.log(levelDetail);
+
     return (
         <div className="font-montserrat flex gap-4 items-stretch flex-col w-full">
             {levelDetail.map((element, index) => {

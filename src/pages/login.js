@@ -10,12 +10,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 
 import Nav from "../components/Navbar/nav";
-import Bg from "@components/BG/bg";
+import { useAuth } from "@context/AuthContext";
 
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
     const router = useRouter();
-
+    const { setIsLoggedIn } = useAuth();
     const loginApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/login`;
 
     const getLogin = async (router) => {
@@ -27,6 +27,7 @@ export default function Login() {
             const response = await axios.get(loginApiUrl, config);
 
             if (response.status === 200) {
+                setIsLoggedIn(true);
                 toast.success(response.data.message);
                 router.push("/levels");
             }
@@ -58,18 +59,18 @@ export default function Login() {
                 toast.error("Login Failed! wrong credentials");
             } else if (response.data.success === false) {
                 toast.error(response.data.message);
-            } else {
+            } else if (response.status === 200) {
+                setIsLoggedIn(true);
                 toast.success("Login Successful!");
                 router.push("/levels");
             }
         } catch (error) {
-            toast.error("Login Failed! please enter correct password and email");
+            toast.error("Login Failed! Something broke");
         }
     };
 
     return (
         <>
-
             <Nav className="z-50" userStatus={false}></Nav>
             <ToastContainer autoClose={2000} />
 

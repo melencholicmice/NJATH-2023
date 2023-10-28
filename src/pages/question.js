@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import QuestionBox from "@components/QuestionBox/QuestionBox";
 
 function getQueryParameters(url) {
@@ -19,19 +19,26 @@ const Question = () => {
     const getQuestionData = async (ApiEndpoint, config) => {
         try {
             const response = await fetch(ApiEndpoint, config);
-
+            const data = await response.json();
+            console.log(data);
             if (response.ok) {
-                const data = await response.json();
                 setQuestionData(data.data);
             } else if (response.status === 400) {
-                toast.error("This Question is locked");
-                router.push("/levels")
+                if (data.message) {
+                    toast.error(data.message);
+                    router.push("/levels")
+                }
+                else {
+                    toast.error("Unknown error occured");
+                    router.push("/levels")
+                }
             } else {
                 console.error(`Failed to fetch data. Status: ${response.status}`);
                 router.push("/levels")
             }
         } catch (error) {
             toast.error("Something Broke! Please Refresh");
+            router.push("/levels")
         }
     };
 
