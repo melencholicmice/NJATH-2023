@@ -8,6 +8,11 @@ function getQueryParameters(url) {
     const queryParameters = new URL(url, `${process.env.NEXT_PUBLIC_FRONTEND_URL}`).searchParams;
     const level = parseInt(queryParameters.get("level"), 10);
     const order = parseInt(queryParameters.get("order"), 10);
+
+    console.log("URL:", url); // Check the URL being passed to the function
+    console.log("Extracted level:", level);
+    console.log("Extracted order:", order);
+
     return { level, order };
 }
 

@@ -13,7 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import {signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Nav = () => {
-  const { setIsLoggedIn, user, isLoggedIn } = useAuth();
+  const { setIsLoggedIn, user, isLoggedIn, setUser } = useAuth();
   const [toggleDropDown, setToggleDropDown] = useState(null);
   const logoutApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/logout`;
   const router = useRouter();
@@ -30,6 +30,7 @@ const Nav = () => {
         router.push("/login");
         setIsLoggedIn(false);
         setToggleDropDown(false);
+        setUser(null);
         toast.success("Logout succesful");
         console.log(response.data.message);
       }
