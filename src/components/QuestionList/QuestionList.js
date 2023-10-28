@@ -14,10 +14,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function QuestionList({ question, level }) {
     const router = useRouter();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleOpenConfirmationModal = (link) => {
         const confirmation = window.confirm(
-            "Are you sure you want to unlock this question? This will deduct 20 points."
+            "Are you sure you want to unlock this question? This will deduct 10 points."
         );
 
         if (confirmation) {
