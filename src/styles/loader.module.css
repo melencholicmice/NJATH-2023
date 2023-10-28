@@ -16,7 +16,7 @@ width: 12px;
  transform: translate(-50%, -50%); */
  /* background-color: white; */
  /* border-radius: 50%; */
- animation: rotate 4s  steps(8) infinite; 
+ animation: rotate 2s  steps(256) infinite; 
  /* order: 0; */
  /* overflow: hidden; */
 

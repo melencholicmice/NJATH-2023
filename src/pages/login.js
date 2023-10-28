@@ -71,7 +71,7 @@ export default function Login() {
 
     return (
         <>
-            <Nav className="z-50" userStatus={false}></Nav>
+            <Nav className="z-50" ></Nav>
             <ToastContainer autoClose={2000} />
 
 
@@ -124,7 +124,7 @@ export default function Login() {
 
                     <button
                         type="submit"
-                        className="black_btn w-full h-12 rounded-sm text-xl">
+                        className="black_btn w-full grow-1 h-12 rounded-sm text-xl">
                         Login
                     </button>
                     <div className={styles.registerRedir}>

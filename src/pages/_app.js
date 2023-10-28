@@ -5,7 +5,17 @@ import Image from "next/image";
 import Loader from "@/components/Loading/Loader.js";
 import Bg from "@components/BG/bg";
 import { AuthProvider } from "@context/AuthContext";
+import { createTheme, ThemeProvider } from '@mui/material';
 
+const theme = createTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat', 
+        'sans-serif',
+      ].join(','),
+    },
+    
+  });
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
@@ -33,19 +43,13 @@ export default function App({ Component, pageProps }) {
     }, [router.events]);
     return (
         <main>
+            <ThemeProvider theme={theme}>
+            {/* <CssBaseline /> */}
             <AuthProvider>
                 <Bg />
                 {loading ? <Loader /> : <Component {...pageProps} />}
-                {/* <div className=" foot_cap">
-                    <Image
-                        src="/assets/foot_cap.svg"
-                        alt="footer caption"
-                        height={29}
-                        width={565}
-                        className="min-w-[200px] w-2/6 max-w-[300px]"
-                    />
-                </div> */}
             </AuthProvider>
+            </ThemeProvider>
         </main >
     );
 }

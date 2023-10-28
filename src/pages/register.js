@@ -48,7 +48,7 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
-            <Nav className="styles.navText" userStatus={false}></Nav>
+            <Nav className="styles.navText"></Nav>
             <ToastContainer autoClose={2000} />
             <Image
                 src="/assets/treasure_box.svg"

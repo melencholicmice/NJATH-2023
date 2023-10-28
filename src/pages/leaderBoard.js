@@ -27,6 +27,7 @@ export default function StickyHeadTable() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [data, setData] = React.useState([]);
+    const [myRank, setMyRank] = React.useState(0);
 
     const fetchData = async () => {
         console.log("entered");
@@ -41,6 +42,7 @@ export default function StickyHeadTable() {
             );
 
             const result = response.data.data;
+            setMyRank(response.data.myRank);
             console.log(result);
 
             if (Array.isArray(result)) {
@@ -79,73 +81,84 @@ export default function StickyHeadTable() {
 
     return (
         <div>
-            <Nav classusername="styles.navText"></Nav>
+            <Nav></Nav>
             <ToastContainer autoClose={2000} />
             <div classusername="app-background" />
-            <Paper
-                sx={{
-                    width: "80%",
-                    overflow: "hidden",
-                    backgroundColor: "transparent",
-                    margin: "auto",
-                    marginTop: 20,
-                    border: "2px solid grey",
-                }}
-            >
-                <TableContainer sx={{ maxHeight: 500 }}>
-                    <Table stickyHeader aria-label="sticky table" sx={{ borderRadius: 10 }}>
-                        <TableHead>
-                            <TableRow>
-                                {columns.map((column) => (
-                                    <TableCell
-                                        key={column.id}
-                                        align={column.align}
-                                        style={{
-                                            minWidth: column.minWidth,
-                                            color: "gold",
-                                            backgroundColor: "transparent",
-                                        }}
-                                    >
-                                        {column.label}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {data
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row) => (
-                                    <TableRow
-                                        hover
-                                        role="checkbox"
-                                        tabIndex={-1}
-                                        key={row.username}
-                                    >
-                                        {columns.map((column) => (
-                                            <TableCell
-                                                key={column.id}
-                                                align={column.align}
-                                                sx={{ color: "gold" }}
-                                            >
-                                                {row[column.id]}
-                                            </TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                    rowsPerPageOptions={[10, 25, 100]}
-                    component="div"
-                    count={data.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                    sx={{ color: "#111A23", backgroundColor: "gold" }}
-                />
-            </Paper>
-        </div>
+            <div className="flex-center flex-col w-full  ">
+                <div className=" font-montserrat max-md:text-sm gap-4 max-sm:p-5 flex-between justify-center text-lg font-bold w-4/5 tracking-wide my-4  mt-10">
+                    <p>Leaderboard</p>
+                    <p className="align-right">
+                        Your Rank: <span className="text-njathgold">{myRank}</span>
+                    </p>
+                </div>
+                <Paper
+                    sx={{
+                        width: "80%",
+                        overflow: "hidden",
+                        backgroundColor: "transparent",
+                        margin: "auto",
+                        // marginTop: 20,
+                        border: "2px solid grey",
+                        fontFamily: "Montserrat, sans-serif"
+                    }}
+
+                >
+                    <TableContainer sx={{ maxHeight: 500, fontFamily: "Montserrat, sans-serif" }}>
+                        <Table stickyHeader aria-label="sticky table" sx={{ borderRadius: 10 }}>
+                            <TableHead>
+                                <TableRow>
+                                    {columns.map((column) => (
+                                        <TableCell
+                                            key={column.id}
+                                            align={column.align}
+                                            style={{
+                                                minWidth: column.minWidth,
+                                                color: "#FDCC06",
+                                                backgroundColor: "transparent",
+                                                fontWeight: "700"
+                                            }}
+                                        >
+                                            {column.label}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {data
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((row) => (
+                                        <TableRow
+                                            hover
+                                            role="checkbox"
+                                            tabIndex={-1}
+                                            key={row.username}
+                                        >
+                                            {columns.map((column) => (
+                                                <TableCell
+                                                    key={column.id}
+                                                    align={column.align}
+                                                    sx={{ color: "white", fontWeight: "500", letterSpacing: "1px" }}
+                                                >
+                                                    {row[column.id]}
+                                                </TableCell>
+                                            ))}
+                                        </TableRow>
+                                    ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                        rowsPerPageOptions={[10]}
+                        component="div"
+                        count={data.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                        sx={{ color: "#111A23", backgroundColor: "#FDCC06", fontWeight: "600", letterSpacing: "1px" }}
+                    />
+                </Paper>
+            </div>
+         </div>
     );
 }

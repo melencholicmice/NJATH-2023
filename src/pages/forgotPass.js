@@ -38,7 +38,7 @@ export default function Login() {
 
     return (
         <>
-            <Nav className="z-50" userStatus={false}></Nav>
+            <Nav className="z-50"></Nav>
             <ToastContainer autoClose={2000} />
 
             <Image

@@ -52,7 +52,7 @@ const Levels = () => {
     return (
         <div className="font-montserrat">
             <ToastContainer autoClose={2000} />
-            <Nav userStatus={true} />
+            <Nav />
 
             <div className="app-background" />
             <div className="flex-start flex-col w-full p-20 max-sm:p-5">
