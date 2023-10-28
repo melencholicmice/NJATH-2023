@@ -88,7 +88,7 @@ const Nav = () => {
               src="/assets/icons/pajamas_hamburger.svg"
               width={37}
               height={37}
-              className="px-1.5 mx-1 fill-njathgold"
+              className="px-1.5 mx-1 fill-njathgold cursor-pointer"
               alt="profile"
               onClick={() => setToggleDropDown((prev) => !prev)}
             />
