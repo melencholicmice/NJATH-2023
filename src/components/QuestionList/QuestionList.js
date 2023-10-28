@@ -90,7 +90,7 @@ export default function QuestionList({ question, level }) {
 
                 return (
                     <>
-                        <Link key={index} href={link} style={divStyle}>
+                        <Link key={index} style={divStyle}>
                             <div>{icon}</div>
                             <div className="ml-4">
                                 {" "}
