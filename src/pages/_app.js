@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import "@/styles/globals.css";
+import Image from "next/image";
 import Loader from "@/components/Loading/Loader.js";
 import Bg from "@components/BG/bg";
 
@@ -33,6 +34,15 @@ export default function App({ Component, pageProps }) {
         <main>
             <Bg/>
             {loading ? <Loader /> : <Component {...pageProps} />}
+            <div className="flex-center w-full bg-njathbg h-fit">
+            <Image
+            src="/assets/foot_cap.svg"
+            alt="footer caption"
+            height={29}
+            width={565}
+            className="foot_cap"
+            />
+            </div>
         </main>
     );
 }

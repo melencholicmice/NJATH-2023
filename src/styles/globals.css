@@ -8,17 +8,13 @@ html {
     @apply bg-njathbg;
 
     color: white;
-    margin: 10px;
+    /* margin: 10px; */
 }
-/* .main {
-    width: 100vw;
-    min-height: 100vh;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    padding: 120px 24px 160px 24px;
-    pointer-events: none;
-  } */
+.main {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
 
 @media screen and (max-width: 640px) {
     .main {
@@ -26,6 +22,10 @@ html {
     }
 }
 
+body{
+    margin:0;
+    padding: 0;
+}
 /* Tailwind Styles */
 
 .app {
@@ -150,4 +150,16 @@ html {
     left:50%;
     transform: translate(-50%, 0);
     z-index: -100;
+}
+
+.foot_cap{
+    position:absolute;
+    left:50%;
+    /* bottom: 0%; */
+    width: 30%;
+    min-width:  150px;
+
+    transform: translate(-50%, -10%);
+    padding-bottom: min(20px, 10%);
+    padding-top:10px ;
 }

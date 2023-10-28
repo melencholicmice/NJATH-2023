@@ -13,12 +13,12 @@ import Bg from "@components/BG/bg";
 
 export default function Landing() {
     return (
-        <div className="font-montserrat ">
+        <div className="font-montserrat p-0 m-0 w-full">
             <Nav />
             <Bg/>
             <ToastContainer autoClose={2000} />
-            <div className="app-background" />
-            <div className="flex-center mt-20 flex-col">
+            {/* <div className="app-background" /> */}
+            <div className="flex-center mt-20 flex-col w-full">
                 <Image
                     src="/assets/Typeface.svg"
                     width={448.26}
@@ -50,7 +50,7 @@ export default function Landing() {
                         Rulebook
                     </Link>
                 </div>
-                <div className="footer flex justify-evenly mt-28 mb-8 w-full h-1/2 px-10 items-start">
+                <div className="bg-njathbg footer flex justify-evenly pt-16 pb-8 border-top border-t-2 border-njathgold/50 w-full h-1/2 px-5 mt-10 items-start">
                     <div className="flex-column gap-6 self-start">
                         <Image
                             src="/assets/Celesta-Icon.svg"
