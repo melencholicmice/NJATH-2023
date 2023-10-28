@@ -8,6 +8,9 @@ import Box from "@mui/material/Box";
 import { Montserrat } from "next/font/google";
 import { useAuth } from "@context/AuthContext";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function QuestionList({ question, level }) {
     const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false);
@@ -15,18 +18,11 @@ export default function QuestionList({ question, level }) {
     const [unlockLink, setUnlockLink] = useState("");
     const { setUnlockedQuestion } = useAuth();
     const router = useRouter();
+
     const handleOpenConformationModal = () => {
-        setIsUnlockModalOpen(true);
+        toast.info("Question unlocked, 20 points deducted ")
     };
 
-    const handleCloseConformationModal = () => {
-        setIsUnlockModalOpen(false);
-    };
-
-    const conformationHandler = () => {
-        setUnlockedQuestion(true);
-        router.push(`${unlockLink}`)
-    }
 
     return (
         <>
@@ -94,7 +90,9 @@ export default function QuestionList({ question, level }) {
                             <div className="ml-4">
                                 {" "}
                                 <div style={titleStyle}>
-                                    {title}
+                                    <Link href={link}>
+                                        {title}
+                                    </Link>
                                 </div>
                             </div>
                             <div className="ml-auto">
@@ -114,7 +112,9 @@ export default function QuestionList({ question, level }) {
                                             fontFamily: "Montserrat",
                                         }}
                                     >
-                                        Unlock
+                                        <Link href={`/question?safe=${1}&level=${Number(level)}&order=${index + 1}`}>
+                                            Unlock
+                                        </Link>
                                     </Button>
                                 )}
                             </div>
@@ -211,3 +211,55 @@ export default function QuestionList({ question, level }) {
         </>
     );
 }
+
+// <Modal
+//     open={isUnlockModalOpen}
+//     onClose={handleCloseConformationModal}
+//     aria-labelledby="confirm-submission"
+//     aria-describedby="are-you-sure"
+// >
+//     <Box
+//         sx={{
+//             position: "absolute",
+//             top: "50%",
+//             left: "50%",
+//             transform: "translate(-50%, -50%)",
+//             background: "#111A23",
+//             border: "2px solid goldenyellow",
+//             borderRadius: "8px",
+//             p: 4,
+//             width: 350,
+//             textAlign: "center",
+//             color: "white",
+//         }}
+//     >
+//         <h2>Confirm Unlock</h2>
+//         <p>Are you sure you want to unlock the question?</p>
+//         <div>
+//             <Button
+//                 variant="contained"
+//                 onClick={handleCloseConformationModal}
+//                 style={{
+//                     backgroundColor: "red",
+//                     color: "white",
+//                     border: "1px solid goldenyellow",
+//                     margin: "5px",
+//                 }}
+//             >
+//                 No
+//             </Button>
+//             <Button
+//                 variant="contained"
+//                 onClick={conformationHandler}
+//                 style={{
+//                     backgroundColor: "green",
+//                     color: "white",
+//                     border: "1px solid goldenyellow",
+//                     margin: "5px",
+//                 }}
+//             >
+//                 Yes
+//             </Button>
+//         </div>
+//     </Box>
+// </Modal>
