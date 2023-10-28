@@ -65,7 +65,7 @@ const Level = ({ unlocked, level }) => {
                 }}
             >
                 <AccordionSummary>
-                    <div className="py-0 px-2.5 flex-between w-full self-start">
+                    <div className="py-0 flex-between w-full self-start">
                         <Typography
                             style={{
                                 color: "var(--font-color)",

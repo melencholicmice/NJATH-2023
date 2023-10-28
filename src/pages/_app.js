@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }) {
             <AuthProvider>
                 <Bg />
                 {loading ? <Loader /> : <Component {...pageProps} />}
-                <div className=" foot_cap">
+                {/* <div className=" foot_cap">
                     <Image
                         src="/assets/foot_cap.svg"
                         alt="footer caption"
@@ -44,7 +44,7 @@ export default function App({ Component, pageProps }) {
                         width={565}
                         className="min-w-[200px] w-2/6 max-w-[300px]"
                     />
-                </div>
+                </div> */}
             </AuthProvider>
         </main >
     );
