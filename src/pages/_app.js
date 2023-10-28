@@ -34,13 +34,13 @@ export default function App({ Component, pageProps }) {
         <main>
             <Bg/>
             {loading ? <Loader /> : <Component {...pageProps} />}
-            <div className="flex-center w-full bg-njathbg h-fit">
+            <div className=" foot_cap">
             <Image
             src="/assets/foot_cap.svg"
             alt="footer caption"
             height={29}
             width={565}
-            className="foot_cap"
+           className="min-w-[200px] w-2/6 max-w-[300px]"
             />
             </div>
         </main>

@@ -8,12 +8,15 @@ html {
     @apply bg-njathbg;
 
     color: white;
+    overflow-x: hidden;
+
     /* margin: 10px; */
 }
-.main {
+main {
     height: 100%;
     width: 100%;
-    position: absolute;
+    overflow-x: hidden;
+    /* position: absolute; */
   }
 
 @media screen and (max-width: 640px) {
@@ -152,14 +155,17 @@ body{
     z-index: -100;
 }
 
-.foot_cap{
+.foot_cap {
+    @apply flex-col flex-center w-full h-fit;
     position:absolute;
     left:50%;
-    /* bottom: 0%; */
-    width: 30%;
-    min-width:  150px;
+    bottom: 0%;
+    width: 100%;
+    
 
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, 50%);
     padding-bottom: min(20px, 10%);
-    padding-top:10px ;
+    padding-bottom:5vh ;
+    padding-top: 10vh;
+    /* border: 2px solid red; */
 }

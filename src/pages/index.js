@@ -50,7 +50,7 @@ export default function Landing() {
                         Rulebook
                     </Link>
                 </div>
-                <div className="bg-njathbg footer flex justify-evenly pt-16 pb-8 border-top border-t-2 border-njathgold/50 w-full h-1/2 px-5 mt-10 items-start">
+                <div className="bg-njathbg footer flex justify-evenly pt-16 pb-8 border-top border-t-2 border-njathgold/50 w-full h-1/2 px-5 max-md:px-2 mt-10 items-start">
                     <div className="flex-column gap-6 self-start">
                         <Image
                             src="/assets/Celesta-Icon.svg"

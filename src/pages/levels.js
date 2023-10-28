@@ -54,8 +54,8 @@ const Levels = () => {
             <Nav userStatus={true} />
             
             <div className="app-background" />
-            <div className="flex-start flex-col w-full p-20 max-sm:p-5">
-            <div className="max-md:text-sm gap-4 flex-between text-lg font-bold w-full tracking-wide my-4 mt-10">
+            <div className="flex-start flex-col w-full p-20 pt-10 max-sm:p-5">
+            <div className="max-md:text-sm gap-4 flex-between text-lg font-bold w-full tracking-wide my-4">
                 <p>Levels</p>
                 <p className="align-right">
                     Your Score: <span className="text-njathgold">{data ? data.points : "0"}</span>
