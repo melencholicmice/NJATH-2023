@@ -12,10 +12,9 @@ function QuestionBox({ imageUrl, title, description, order, level }) {
             {/* <Modal open={open} handleClose={handleClose} /> */}
             <div className={styles.mainContainer}>
                 <div className={styles.scoreBox}>
-                    <Image src="/assets/Vector.svg"
-                        width={23}
-                        height={25}
-                    ></Image>
+                    <img src="https://github.com/melencholicmice/Reverberance2022/assets/93900332/cff984a5-3fb5-40d5-97b2-970a0d8f5af5"
+                        
+                    ></img>
                     <div className={styles.qNo}>
                         L{level} Q{order} :- {title}
                     </div>

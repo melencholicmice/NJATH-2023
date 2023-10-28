@@ -203,7 +203,7 @@
     
     @media (max-width: 500px) {
         font-size: 13px;
-        overflow: none;
+        /* overflow: scroll; */
     }
 }
 .login:hover{

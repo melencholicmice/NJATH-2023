@@ -14,6 +14,7 @@ export default function QuestionList({ question, level }) {
     const [showUnlockConfirmation, setShowUnlockConfirmation] = useState(false);
     const [unlockLink, setUnlockLink] = useState("");
     const { setUnlockedQuestion } = useAuth();
+    
     const router = useRouter();
     const handleOpenConformationModal = () => {
         setIsUnlockModalOpen(true);
@@ -103,7 +104,7 @@ export default function QuestionList({ question, level }) {
                                     <Button
                                         variant="outlined"
                                         onClick={() => {
-                                            setUnlockLink(`/question?level=${level}&order=${index + 1}`);
+                                            console.log("clicked Unlock")
                                             handleOpenConformationModal()
                                         }}
                                         style={{
@@ -157,7 +158,9 @@ export default function QuestionList({ question, level }) {
                                     </Button>
                                     <Button
                                         variant="contained"
-                                        onClick={conformationHandler}
+                                        onClick={() => {
+                                            setUnlockLink(`/question?level=${level}&order=${index + 1}`);
+                                            conformationHandler()}}
                                         style={{
                                             backgroundColor: "green",
                                             color: "white",
@@ -174,40 +177,6 @@ export default function QuestionList({ question, level }) {
                 );
             })}
 
-            {/* Unlock Confirmation Modal */}
-            {
-                showUnlockConfirmation && (
-                    <div>
-                        <div>Are you sure you want to unlock this question?</div>
-                        <Button
-                            variant="outlined"
-                            onClick={handleUnlockQuestion}
-                            style={{
-                                opacity: 0.8,
-                                color: "#FDCC06",
-                                fontWeight: "bold",
-                                backgroundColor: "#1D2D3E",
-                                fontFamily: "Montserrat",
-                            }}
-                        >
-                            Yes
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            onClick={handleCloseUnlockConfirmation}
-                            style={{
-                                opacity: 0.8,
-                                color: "#FDCC06",
-                                fontWeight: "bold",
-                                backgroundColor: "#1D2D3E",
-                                fontFamily: "Montserrat",
-                            }}
-                        >
-                            No
-                        </Button>
-                    </div>
-                )
-            }
             </>
     );
 }
