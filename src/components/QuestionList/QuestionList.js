@@ -13,10 +13,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function QuestionList({ question, level }) {
-    const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false);
-    const [showUnlockConfirmation, setShowUnlockConfirmation] = useState(false);
-    const [unlockLink, setUnlockLink] = useState("");
-    const { setUnlockedQuestion } = useAuth();
+
+
     const router = useRouter();
 
     const handleOpenConformationModal = () => {
@@ -85,7 +83,8 @@ export default function QuestionList({ question, level }) {
 
                 return (
                     <>
-                        <Link key={index} href={link} style={divStyle}>
+                        <ToastContainer autoClose={2000} />
+                        <div key={index} style={divStyle}>
                             <div>{icon}</div>
                             <div className="ml-4">
                                 {" "}
@@ -100,10 +99,7 @@ export default function QuestionList({ question, level }) {
                                 {type === 0 && (
                                     <Button
                                         variant="outlined"
-                                        onClick={() => {
-                                            setUnlockLink(`/question?level=${level}&order=${index + 1}`);
-                                            handleOpenConformationModal()
-                                        }}
+                                        onClick={handleOpenConformationModal}
                                         style={{
                                             opacity: 0.8,
                                             color: "#FDCC06",
@@ -118,96 +114,10 @@ export default function QuestionList({ question, level }) {
                                     </Button>
                                 )}
                             </div>
-                        </Link>
-                        <Modal
-                            open={isUnlockModalOpen}
-                            onClose={handleCloseConformationModal}
-                            aria-labelledby="confirm-submission"
-                            aria-describedby="are-you-sure"
-                        >
-                            <Box
-                                sx={{
-                                    position: "absolute",
-                                    top: "50%",
-                                    left: "50%",
-                                    transform: "translate(-50%, -50%)",
-                                    background: "#111A23",
-                                    border: "2px solid goldenyellow",
-                                    borderRadius: "8px",
-                                    p: 4,
-                                    width: 350,
-                                    textAlign: "center",
-                                    color: "white",
-                                }}
-                            >
-                                <h2>Confirm Unlock</h2>
-                                <p>Are you sure you want to unlock the question?</p>
-                                <div>
-                                    <Button
-                                        variant="contained"
-                                        onClick={handleCloseConformationModal}
-                                        style={{
-                                            backgroundColor: "red",
-                                            color: "white",
-                                            border: "1px solid goldenyellow",
-                                            margin: "5px",
-                                        }}
-                                    >
-                                        No
-                                    </Button>
-                                    <Button
-                                        variant="contained"
-                                        onClick={conformationHandler}
-                                        style={{
-                                            backgroundColor: "green",
-                                            color: "white",
-                                            border: "1px solid goldenyellow",
-                                            margin: "5px",
-                                        }}
-                                    >
-                                        Yes
-                                    </Button>
-                                </div>
-                            </Box>
-                        </Modal>
+                        </div>
                     </>
                 );
             })}
-
-            {/* Unlock Confirmation Modal */}
-            {
-                showUnlockConfirmation && (
-                    <div>
-                        <div>Are you sure you want to unlock this question?</div>
-                        <Button
-                            variant="outlined"
-                            onClick={handleUnlockQuestion}
-                            style={{
-                                opacity: 0.8,
-                                color: "#FDCC06",
-                                fontWeight: "bold",
-                                backgroundColor: "#1D2D3E",
-                                fontFamily: "Montserrat",
-                            }}
-                        >
-                            Yes
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            onClick={handleCloseUnlockConfirmation}
-                            style={{
-                                opacity: 0.8,
-                                color: "#FDCC06",
-                                fontWeight: "bold",
-                                backgroundColor: "#1D2D3E",
-                                fontFamily: "Montserrat",
-                            }}
-                        >
-                            No
-                        </Button>
-                    </div>
-                )
-            }
         </>
     );
 }
