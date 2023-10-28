@@ -79,7 +79,7 @@ const Question = () => {
     return (
         <>
         <Head>
-        <title>L0{questionData.level}Q0{questionData.order}</title>
+        <title>{!questionData? "Loading Question" : `L0${questionData.level} Q0${questionData.order}`}</title>
       </Head>
             <ToastContainer autoClose={2000} />
             {questionData !== null ? (

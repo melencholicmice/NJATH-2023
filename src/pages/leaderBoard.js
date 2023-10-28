@@ -28,7 +28,7 @@ export default function StickyHeadTable() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [data, setData] = React.useState([]);
-    const [myRank, setMyRank] = React.useState(0);
+    const [myRank, setMyRank] = React.useState(5);
 
     const fetchData = async () => {
         console.log("entered");
@@ -41,10 +41,13 @@ export default function StickyHeadTable() {
                 `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/participant/leaderboard`,
                 config
             );
+            console.log(response);
 
             const result = response.data.data;
+
             setMyRank(response.data.myRank);
-            console.log(result);
+            // console.log(myRank);
+            // console.log(result);
 
             if (Array.isArray(result)) {
                 const sortedData = result.sort((a, b) => b.points - a.points);
@@ -92,7 +95,7 @@ export default function StickyHeadTable() {
                 <div className=" font-montserrat max-md:text-sm gap-4 max-sm:p-5 flex-between justify-center text-lg font-bold w-4/5 tracking-wide my-4  mt-10">
                     <p>Leaderboard</p>
                     <p className="align-right">
-                        Your Rank: <span className="text-njathgold">{myRank-1}</span>
+                        Your Rank: <span className="text-njathgold">{myRank}</span>
                     </p>
                 </div>
                 <Paper
@@ -103,9 +106,8 @@ export default function StickyHeadTable() {
                         margin: "auto",
                         // marginTop: 20,
                         border: "2px solid grey",
-                        fontFamily: "Montserrat, sans-serif"
+                        fontFamily: "Montserrat, sans-serif",
                     }}
-
                 >
                     <TableContainer sx={{ maxHeight: 500, fontFamily: "Montserrat, sans-serif" }}>
                         <Table stickyHeader aria-label="sticky table" sx={{ borderRadius: 10 }}>
@@ -117,9 +119,9 @@ export default function StickyHeadTable() {
                                             align={column.align}
                                             style={{
                                                 minWidth: column.minWidth,
-                                                color: "#FDCC06",
-                                                backgroundColor: "transparent",
-                                                fontWeight: "700"
+                                                color: "#111A23",
+                                                backgroundColor: "#FDCC06",
+                                                fontWeight: "700",
                                             }}
                                         >
                                             {column.label}
@@ -141,7 +143,11 @@ export default function StickyHeadTable() {
                                                 <TableCell
                                                     key={column.id}
                                                     align={column.align}
-                                                    sx={{ color: "white", fontWeight: "500", letterSpacing: "1px" }}
+                                                    sx={{
+                                                        color: "white",
+                                                        fontWeight: "500",
+                                                        letterSpacing: "1px",
+                                                    }}
                                                 >
                                                     {row[column.id]}
                                                 </TableCell>
@@ -159,10 +165,15 @@ export default function StickyHeadTable() {
                         page={page}
                         onPageChange={handleChangePage}
                         onRowsPerPageChange={handleChangeRowsPerPage}
-                        sx={{ color: "#111A23", backgroundColor: "#FDCC06", fontWeight: "600", letterSpacing: "1px" }}
+                        sx={{
+                            color: "#111A23",
+                            backgroundColor: "#D3D3D3",
+                            fontWeight: 700,
+                            letterSpacing: "1px",
+                        }}
                     />
                 </Paper>
             </div>
-         </div>
+        </div>
     );
 }

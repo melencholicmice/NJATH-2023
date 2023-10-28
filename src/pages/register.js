@@ -24,8 +24,8 @@ export default function Register() {
         else if (details.fullname.length == 0) toast.error("Please enter your Full Name");
         else if (details.phone.length != 10)
             toast.error("Please enter a valid Indian Phone Number");
-        else if (details.password.length < 5 || details.password.length > 32)
-            toast.error("Password must be between 5 and 32 characters");
+        else if (details.username.length == 0) toast.error("Please enter your Username");
+        else if (details.password.length < 8) toast.error("Password must be atleast 8 characters");
         else {
             try {
                 const response = await axios.post(
@@ -34,11 +34,12 @@ export default function Register() {
                 );
                 if (response.data.success === false) toast.error(response.data.message);
                 else {
+                    toast.success("Registration successful. Login to continue.");
                     router.push("/login");
                 }
+                console.log(response);
             } catch (error) {
-                console.log(error);
-                toast.error("Something went wrong!");
+                toast.error(error.response.data.message);
             }
         }
     };
@@ -49,11 +50,13 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
+            
             <Head>
-        <title>Register - NJATH</title>
-      </Head>
-            <Nav className="styles.navText"></Nav>
+            <title>Register - NJATH</title></Head>
             <ToastContainer autoClose={2000} />
+            
+            <Nav className="styles.navText"></Nav>
+
             <Image
                 src="/assets/treasure_box.svg"
                 className={styles.treasurebox}

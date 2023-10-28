@@ -1,6 +1,7 @@
 import styles from "@/styles/question.module.css";
 import Image from "next/image";
 import CheckAnswer from "./CheckAnswer";
+import Link from "next/link";
 
 function QuestionBox({ imageUrl, title, description, order, level }) {
     // console.log(props);
@@ -11,11 +12,14 @@ function QuestionBox({ imageUrl, title, description, order, level }) {
         <>
             {/* <Modal open={open} handleClose={handleClose} /> */}
             <div className={styles.mainContainer}>
+                
                 <div className={styles.scoreBox}>
+                <Link href="/levels">
                     <img src="https://github.com/melencholicmice/Reverberance2022/assets/93900332/cff984a5-3fb5-40d5-97b2-970a0d8f5af5"
                         
-                    ></img>
+                    ></img></Link>
                     <div className={styles.qNo}>
+                    
                         L{level} Q{order} :- {title}
                     </div>
 

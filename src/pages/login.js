@@ -37,9 +37,9 @@ export default function Login() {
         }
     };
 
-    useEffect(() => {
-        getLogin(router);
-    });
+    // useEffect(() => {
+    //     getLogin(router);
+    // });
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -56,17 +56,15 @@ export default function Login() {
             const response = await axios.post(loginApiUrl, details, config);
 
             const cookies = response.headers["set-cookie"];
-            if (response.status === 400) {
-                toast.error("Login Failed! wrong credentials");
-            } else if (response.data.success === false) {
-                toast.error(response.data.message);
-            } else if (response.status === 200) {
+
+            if (response.data.success === false) toast.error(response.data.message);
+            else {
+                toast.success(response.data.message);
                 setIsLoggedIn(true);
-                toast.success("Login Successful!");
                 router.push("/levels");
             }
         } catch (error) {
-            toast.error("Login Failed! Something broke");
+            toast.error(error.response.data.message);
         }
     };
 
@@ -75,9 +73,8 @@ export default function Login() {
         <Head>
         <title>Login - NJATH</title>
       </Head>
-            <Nav className="z-50" ></Nav>
+            <Nav className="z-50"></Nav>
             <ToastContainer autoClose={2000} />
-
 
             <Image
                 src="/assets/treasure_box.svg"
@@ -88,11 +85,7 @@ export default function Login() {
             ></Image>
 
             <div className={styles.mainContainer}>
-
-                <form
-                    className={styles.loginBox}
-                    onSubmit={submitHandler}
-                >
+                <form className={styles.loginBox} onSubmit={submitHandler}>
                     <div className="head_text">Login</div>
 
                     <div className="flex flex-col justify-end w-full">
@@ -124,11 +117,10 @@ export default function Login() {
                         </div>
                     </div>
 
-
-
                     <button
                         type="submit"
-                        className="black_btn w-full grow-1 h-12 rounded-sm text-xl">
+                        className="black_btn w-full grow-1 h-12 rounded-sm text-xl"
+                    >
                         Login
                     </button>
                     <div className={styles.registerRedir}>
@@ -144,7 +136,6 @@ export default function Login() {
                         </Link>
                     </div>
                 </form>
-
             </div>
         </>
     );
