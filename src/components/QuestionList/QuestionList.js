@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Button from "@mui/material/Button";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,14 +13,20 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function QuestionList({ question, level }) {
-
-
     const router = useRouter();
 
-    const handleOpenConformationModal = () => {
-        toast.info("Question unlocked, 20 points deducted ")
-    };
+    const handleOpenConfirmationModal = (link) => {
+        const confirmation = window.confirm(
+            "Are you sure you want to unlock this question? This will deduct 20 points."
+        );
 
+        if (confirmation) {
+            window.location.href = link; // Redirect to the link
+        } else {
+            // The user clicked "Cancel"
+            toast.error("Unlock canceled.");
+        }
+    };
 
     return (
         <>
@@ -89,9 +95,7 @@ export default function QuestionList({ question, level }) {
                             <div className="ml-4">
                                 {" "}
                                 <div style={titleStyle}>
-                                    <Link href={link}>
-                                        {title}
-                                    </Link>
+                                    <Link href={link}>{title}</Link>
                                 </div>
                             </div>
                             <div className="ml-auto">
@@ -99,7 +103,13 @@ export default function QuestionList({ question, level }) {
                                 {type === 0 && (
                                     <Button
                                         variant="outlined"
-                                        onClick={handleOpenConformationModal}
+                                        onClick={() =>
+                                            handleOpenConfirmationModal(
+                                                `/question?safe=${1}&level=${Number(level)}&order=${
+                                                    index + 1
+                                                }`
+                                            )
+                                        }
                                         style={{
                                             opacity: 0.8,
                                             color: "#FDCC06",
@@ -108,9 +118,7 @@ export default function QuestionList({ question, level }) {
                                             fontFamily: "Montserrat",
                                         }}
                                     >
-                                        <Link href={`/question?safe=${1}&level=${Number(level)}&order=${index + 1}`}>
-                                            Unlock
-                                        </Link>
+                                        Unlock
                                     </Button>
                                 )}
                             </div>
@@ -121,55 +129,3 @@ export default function QuestionList({ question, level }) {
         </>
     );
 }
-
-// <Modal
-//     open={isUnlockModalOpen}
-//     onClose={handleCloseConformationModal}
-//     aria-labelledby="confirm-submission"
-//     aria-describedby="are-you-sure"
-// >
-//     <Box
-//         sx={{
-//             position: "absolute",
-//             top: "50%",
-//             left: "50%",
-//             transform: "translate(-50%, -50%)",
-//             background: "#111A23",
-//             border: "2px solid goldenyellow",
-//             borderRadius: "8px",
-//             p: 4,
-//             width: 350,
-//             textAlign: "center",
-//             color: "white",
-//         }}
-//     >
-//         <h2>Confirm Unlock</h2>
-//         <p>Are you sure you want to unlock the question?</p>
-//         <div>
-//             <Button
-//                 variant="contained"
-//                 onClick={handleCloseConformationModal}
-//                 style={{
-//                     backgroundColor: "red",
-//                     color: "white",
-//                     border: "1px solid goldenyellow",
-//                     margin: "5px",
-//                 }}
-//             >
-//                 No
-//             </Button>
-//             <Button
-//                 variant="contained"
-//                 onClick={conformationHandler}
-//                 style={{
-//                     backgroundColor: "green",
-//                     color: "white",
-//                     border: "1px solid goldenyellow",
-//                     margin: "5px",
-//                 }}
-//             >
-//                 Yes
-//             </Button>
-//         </div>
-//     </Box>
-// </Modal>
