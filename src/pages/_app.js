@@ -6,6 +6,7 @@ import Loader from "@/components/Loading/Loader.js";
 import Bg from "@components/BG/bg";
 import { AuthProvider } from "@context/AuthContext";
 import { createTheme, ThemeProvider } from '@mui/material';
+import Head from "next/head";
 
 const theme = createTheme({
     typography: {
@@ -43,6 +44,7 @@ export default function App({ Component, pageProps }) {
     }, [router.events]);
     return (
         <main>
+            
             <ThemeProvider theme={theme}>
             {/* <CssBaseline /> */}
             <AuthProvider>

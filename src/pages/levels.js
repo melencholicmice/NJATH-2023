@@ -8,6 +8,7 @@ import Loading from "@/components/Loading/Loading";
 import LeveLAccordians from "@components/Level/LevelAccordian";
 import Nav from "../components/Navbar/nav";
 import { useAuth } from "@context/AuthContext";
+import Head from "next/head";
 
 const Levels = () => {
     const [data, setData] = useState(null);
@@ -51,6 +52,9 @@ const Levels = () => {
 
     return (
         <div className="font-montserrat">
+            <Head>
+        <title>Levels - NJATH</title>
+      </Head>
             <ToastContainer autoClose={2000} />
             <Nav />
 

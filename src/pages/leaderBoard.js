@@ -11,6 +11,7 @@ import Nav from "@components/Navbar/nav";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
+import Head from "next/head";
 
 const columns = [
     { id: "Rank", label: "Rank", minWidth: 100 },
@@ -81,6 +82,9 @@ export default function StickyHeadTable() {
 
     return (
         <div>
+            <Head>
+        <title>Leaderboard - NJATH</title>
+      </Head>
             <Nav></Nav>
             <ToastContainer autoClose={2000} />
             <div classusername="app-background" />
@@ -88,7 +92,7 @@ export default function StickyHeadTable() {
                 <div className=" font-montserrat max-md:text-sm gap-4 max-sm:p-5 flex-between justify-center text-lg font-bold w-4/5 tracking-wide my-4  mt-10">
                     <p>Leaderboard</p>
                     <p className="align-right">
-                        Your Rank: <span className="text-njathgold">{myRank}</span>
+                        Your Rank: <span className="text-njathgold">{myRank-1}</span>
                     </p>
                 </div>
                 <Paper

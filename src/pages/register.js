@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
 import Link from "next/link";
+import Head from "next/head";
 export default function Register() {
     const [details, setDetails] = useState({
         email: "",
@@ -48,6 +49,9 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
+            <Head>
+        <title>Register - NJATH</title>
+      </Head>
             <Nav className="styles.navText"></Nav>
             <ToastContainer autoClose={2000} />
             <Image

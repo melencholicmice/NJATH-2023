@@ -9,11 +9,15 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Bg from "@components/BG/bg";
+import Head from "next/head";
 
 
 export default function Landing() {
     return (
         <div className="font-montserrat p-0 m-0 w-full">
+            <Head>
+        <title>NJATH - Not Just Another Treasure Hunt</title>
+      </Head>
             <Nav />
             <Bg/>
             <ToastContainer autoClose={2000} />

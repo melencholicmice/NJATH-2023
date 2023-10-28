@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import Nav from "@components/Navbar/nav";
+import Head from "next/head";
 
 function getQueryParameters(url) {
     const queryParameters = new URL(url, `${process.env.NEXT_PUBLIC_FRONTEND_URL}`).searchParams;
@@ -52,6 +53,9 @@ export default function Login() {
 
     return (
         <>
+        <Head>
+        <title>Reset Your Password - NJATH</title>
+      </Head>
             <Nav className="z-50" ></Nav>
 
             <ToastContainer autoClose={2000} />

@@ -11,6 +11,7 @@ import Image from "next/image";
 
 import Nav from "../components/Navbar/nav";
 import { useAuth } from "@context/AuthContext";
+import Head from "next/head";
 
 export default function Login() {
     const [details, setDetails] = useState({ email: "", password: "" });
@@ -71,6 +72,9 @@ export default function Login() {
 
     return (
         <>
+        <Head>
+        <title>Login - NJATH</title>
+      </Head>
             <Nav className="z-50" ></Nav>
             <ToastContainer autoClose={2000} />
 

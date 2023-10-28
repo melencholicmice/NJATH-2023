@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Nav from "@components/Navbar/nav";
-
+import Head from "next/head";
 export default function Login() {
     const [details, setDetails] = useState({ email: "", phone: "" });
     const router = useRouter();
@@ -38,6 +38,9 @@ export default function Login() {
 
     return (
         <>
+        <Head>
+        <title>Find Your Account - NJATH</title>
+      </Head>
             <Nav className="z-50"></Nav>
             <ToastContainer autoClose={2000} />
 

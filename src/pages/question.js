@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import QuestionBox from "@components/QuestionBox/QuestionBox";
+import Head from 'next/head';
 
 function getQueryParameters(url) {
     const queryParameters = new URL(url, `${process.env.NEXT_PUBLIC_FRONTEND_URL}`).searchParams;
@@ -77,6 +78,9 @@ const Question = () => {
 
     return (
         <>
+        <Head>
+        <title>L0{questionData.level}Q0{questionData.order}</title>
+      </Head>
             <ToastContainer autoClose={2000} />
             {questionData !== null ? (
                 <QuestionBox
