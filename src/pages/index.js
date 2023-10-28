@@ -52,10 +52,8 @@ export default function Landing() {
                 </div>
                 <div className="bg-njathbg footer flex justify-evenly pt-16 pb-8 border-top border-t-2 border-njathgold/50 w-full h-1/2 px-5 max-md:px-2 mt-10 items-start">
                     <div className="flex-column gap-6 self-start">
-                        <Image
-                            src="/assets/Celesta-Icon.svg"
-                            width={69}
-                            height={69}
+                        <img
+                            src="https://github.com/melencholicmice/Reverberance2022/assets/99478938/d0aadcea-5018-4f9f-b585-007e0484c54a"
                             alt="Celesta-Icon"
                         />
                         <p className="font-medium mt-4">Contact:</p>

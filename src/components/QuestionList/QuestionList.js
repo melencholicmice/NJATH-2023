@@ -89,13 +89,13 @@ export default function QuestionList({ question, level }) {
 
                 return (
                     <>
-                        <div key={index} style={divStyle}>
+                        <Link key={index} href={link} style={divStyle}>
                             <div>{icon}</div>
                             <div className="ml-4">
                                 {" "}
-                                <Link href={link} style={titleStyle}>
+                                <div style={titleStyle}>
                                     {title}
-                                </Link>
+                                </div>
                             </div>
                             <div className="ml-auto">
                                 {" "}
@@ -118,7 +118,7 @@ export default function QuestionList({ question, level }) {
                                     </Button>
                                 )}
                             </div>
-                        </div>
+                        </Link>
                         <Modal
                             open={isUnlockModalOpen}
                             onClose={handleCloseConformationModal}
@@ -208,6 +208,6 @@ export default function QuestionList({ question, level }) {
                     </div>
                 )
             }
-        </>
+            </>
     );
 }

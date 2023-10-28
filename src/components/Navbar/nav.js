@@ -60,7 +60,7 @@ const Nav = () => {
               <Link href="/levels" className="outline_btn">
                 Levels</Link>
 
-              <Link href="/leaderboard" className="outline_btn">
+              <Link href="/leaderBoard" className="outline_btn">
                 Learderboard</Link>
               <button
                 onClick={handleLogout}
@@ -103,7 +103,7 @@ const Nav = () => {
                       onClick={() => setToggleDropDown(false)}>
                       Levels </Link>
 
-                    <Link href="/leaderboard"
+                    <Link href="/leaderBoard"
                       className="dropdown_link border_outline_btn w-full hover:text-white font-bold"
                       onClick={() => setToggleDropDown(false)}>
                       Leaderboard
