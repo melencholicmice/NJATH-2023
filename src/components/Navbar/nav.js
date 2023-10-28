@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -10,9 +8,13 @@ import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 // import {signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
+
+
 const Nav = () => {
+  
   const { setIsLoggedIn, user, isLoggedIn, setUser } = useAuth();
   const [toggleDropDown, setToggleDropDown] = useState(null);
   const logoutApiUrl = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/logout`;
@@ -24,17 +26,15 @@ const Nav = () => {
     };
 
     try {
-      const response = await axios.get(logoutApiUrl, config);
-      console.log(response);
-      if (response.status === 200) {
+      document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/'
         router.push("/login");
         setIsLoggedIn(false);
         setToggleDropDown(false);
         setUser(null);
         toast.success("Logout succesful");
-        console.log(response.data.message);
-      }
+      
     } catch (error) {
+      console.log(error);
       console.error("Logout Failed! Something Broke");
     }
 
