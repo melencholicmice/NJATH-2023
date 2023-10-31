@@ -60,11 +60,11 @@ const Nav = () => {
                         </div>
                     ) : (
                         <div className="flex-end gap-3">
-                            <Link href="/login" className="outline_btn">
+                            {/* <Link href="/login" className="outline_btn">
                                 Login
-                            </Link>
+                            </Link> */}
                             <Link href="/register" className="black_btn">
-                                Register
+                                NJATH will be back next year
                             </Link>
                         </div>
                     )}
@@ -118,25 +118,25 @@ const Nav = () => {
                                     <Link href="/login">LOG IN</Link>
                                 </button>
                                 <button type="button" className="black_btn  ">
-                                    <Link href="/register">REGISTER</Link>
+                                    <Link href="/register">NJATH will be back next year</Link>
                                 </button>
                             </div>
 
                             <div className="lg:hidden flex-center space-x-4">
                                 {toggleDropDown && (
                                     <div className="dropdown mr-3 ">
-                                        <Link
+                                        {/* <Link
                                             href="/login"
                                             className="dropdown_link w-full border_outline_btn hover:text-white"
                                             onClick={() => setToggleDropDown(false)}
                                         >
                                             Login{" "}
-                                        </Link>
+                                        </Link> */}
                                         <Link
                                             href="/register"
                                             className="dropdown_link mt-1 w-full black_btn hover:bg-njathbg hover:text-white"
                                         >
-                                            Register
+                                            NJATH will be back next year
                                         </Link>
                                     </div>
                                 )}

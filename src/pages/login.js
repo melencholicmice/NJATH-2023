@@ -70,9 +70,9 @@ export default function Login() {
 
     return (
         <>
-        <Head>
-        <title>Login - NJATH</title>
-      </Head>
+            <Head>
+                <title>Login - NJATH</title>
+            </Head>
             <Nav className="z-50"></Nav>
             <ToastContainer autoClose={2000} />
 
@@ -90,6 +90,7 @@ export default function Login() {
 
                     <div className="flex flex-col justify-end w-full">
                         <input
+                            disabled={true}
                             className="form_input w-full"
                             type="email"
                             placeholder="Email"
@@ -102,6 +103,7 @@ export default function Login() {
 
                     <div className="flex flex-col justify-end w-full">
                         <input
+                            disabled={true}
                             className="form_input autofill:bg-transparent autofill:text-white"
                             type="password"
                             placeholder="Password"
@@ -121,7 +123,7 @@ export default function Login() {
                         type="submit"
                         className="black_btn w-full grow-1 h-12 rounded-sm text-xl"
                     >
-                        Login
+                        Event is over now you cant login
                     </button>
                     <div className={styles.registerRedir}>
                         <span className="text-white/70 font-medium">
