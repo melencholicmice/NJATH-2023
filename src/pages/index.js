@@ -16,10 +16,10 @@ export default function Landing() {
     return (
         <div className="font-montserrat p-0 m-0 w-full">
             <Head>
-                <title>NJATH - Not Just Another Treasure Hunt</title>
-            </Head>
+        <title>NJATH - Not Just Another Treasure Hunt</title>
+      </Head>
             <Nav />
-            <Bg />
+            <Bg/>
             <ToastContainer autoClose={2000} />
             {/* <div className="app-background" /> */}
             <div className="flex-center mt-20 flex-col w-full">
@@ -34,12 +34,9 @@ export default function Landing() {
                     NOT JUST ANOTHER TREASURE HUNT
                 </p>
                 <p className="mt-24 font-bold tracking-wide">What is NJATH?</p>
-                <p className="text-sm mt-4 w-7/12 text-center tracking-normal" style={{ minWidth: 250 }}>
+                <p className="text-sm mt-4 w-7/12 text-center tracking-normal" style={{minWidth: 250}}>
                     NJATH(Not Just Another Treasure Hunt) is a Solo Online Treasure Hunt contest
                     where you go on tackling questions to uncover the hidden solutions!
-                </p>
-                <p>
-                    Please Note that NJATH 2023 is over now, But it will be back next year
                 </p>
                 <Image
                     src="/assets/treasure_box.svg"
@@ -47,13 +44,13 @@ export default function Landing() {
                     height={416}
                     className="rounded-full -mt-6"
                     alt=""
-                    priority={4}
+					priority={4}
                 />
                 <div className="flex-row flex-center -mt-8">
-                    <Link href="" className="black_btn" style={{ marginRight: "max(2.5vw, 5px)" }}>
-                        NJATH Wil be back next year
+                    <Link href="/register" className="black_btn" style={{marginRight: "max(2.5vw, 5px)"}}>
+                        Register
                     </Link>
-                    <Link href="https://drive.google.com/file/d/1l-nZIooehhQXzwERm4cDheG6Zpli3AXM/view?pli=1" className="border_outline" style={{ marginLeft: "max(2.5vw, 5px)", borderRadius: 10 }}>
+                    <Link href="https://drive.google.com/file/d/1l-nZIooehhQXzwERm4cDheG6Zpli3AXM/view?pli=1" className="border_outline" style={{marginLeft: "max(2.5vw, 5px)", borderRadius: 10}}>
                         Rulebook
                     </Link>
                 </div>

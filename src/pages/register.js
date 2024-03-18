@@ -50,11 +50,11 @@ export default function Register() {
 
     return (
         <div className="font-montserrat">
-
+            
             <Head>
-                <title>Register closed, NJATH Wil be back next year</title></Head>
+            <title>Register - NJATH</title></Head>
             <ToastContainer autoClose={2000} />
-
+            
             <Nav className="styles.navText"></Nav>
 
             <Image
@@ -85,7 +85,6 @@ export default function Register() {
                     </div>
                     <div className={styles.inputDiv}>
                         <input
-                            disabled={true}
                             type="email"
                             className={styles.inputField}
                             placeholder="Email"
@@ -97,7 +96,6 @@ export default function Register() {
                     </div>
                     <div className={styles.inputDiv}>
                         <input
-                            disabled={true}
                             type="text"
                             className={styles.inputField}
                             placeholder="Username"
@@ -109,7 +107,6 @@ export default function Register() {
                     </div>
                     <div className={styles.inputDiv}>
                         <input
-                            disabled={true}
                             type="password"
                             className={styles.inputField}
                             placeholder="Create New Password"
@@ -121,7 +118,6 @@ export default function Register() {
                     </div>
                     <div className={styles.inputDiv}>
                         <input
-                            disabled={true}
                             type="text"
                             className={styles.inputField}
                             placeholder="Mobile Number"
@@ -144,12 +140,12 @@ export default function Register() {
                         {error ? error : "Noice"}
                     </div> */}
                     <button onClick={() => register()} className={styles.submit}>
-                        See you again next year
+                        Register
                     </button>
                     <div className={styles.already}>Already Registered?</div>
-                    {/* <Link className={styles.login} href="/login">
+                    <Link className={styles.login} href="/login">
                         Login
-                    </Link> */}
+                    </Link>
                 </div>
                 <div className={styles.imageContainer}>
                     <Image
